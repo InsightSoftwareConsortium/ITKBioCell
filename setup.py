@@ -20,7 +20,7 @@ setup(
     package_dir={'itk': 'itk'},
     download_url=r'https://github.com/InsightSoftwareConsortium/ITKBioCell',
     description=r'An ITK remote module for segmentation of biological cells.',
-    long_description='This module contains classes related to segmentation of biological cells. It has classes to represent cells' shape, color, and growth state. It also has classes to represent a cell genome, whose expression is modeled by differential equations.',
+    long_description='This module contains classes related to segmentation of biological cells. It has classes to represent cells\' shape, color, and growth state. It also has classes to represent a cell genome, whose expression is modeled by differential equations.',
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python",
