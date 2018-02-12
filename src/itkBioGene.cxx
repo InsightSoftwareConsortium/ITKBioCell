@@ -54,8 +54,8 @@ Gene
 
   m_ProteinDomains.clear();
 
-  ProteinDomainsType::const_iterator proteinDomain = gene.m_ProteinDomains.begin();
-  ProteinDomainsType::const_iterator last          = gene.m_ProteinDomains.end();
+  auto proteinDomain = gene.m_ProteinDomains.begin();
+  auto last          = gene.m_ProteinDomains.end();
 
   while ( proteinDomain != last )
     {

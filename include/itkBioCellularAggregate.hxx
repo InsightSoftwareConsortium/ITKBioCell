@@ -93,7 +93,7 @@ void
 CellularAggregate< NSpaceDimension >
 ::Remove(CellBase *cellbase)
 {
-  BioCellType *cell = dynamic_cast< BioCellType * >( cellbase );
+  auto *cell = dynamic_cast< BioCellType * >( cellbase );
 
   if ( !cell )
     {
@@ -109,8 +109,7 @@ CellularAggregate< NSpaceDimension >
   bool regionExist = m_Mesh->GetCell(id, region);
   if ( regionExist )
     {
-    VoronoiRegionType *realRegion =
-      dynamic_cast< VoronoiRegionType * >( region.GetPointer() );
+    auto *realRegion = dynamic_cast< VoronoiRegionType * >( region.GetPointer() );
 
     if ( !realRegion )
       {
@@ -130,8 +129,7 @@ CellularAggregate< NSpaceDimension >
         bool neighborVoronoiExist = m_Mesh->GetCell(neighborId, cellPointer);
         if ( neighborVoronoiExist )
           {
-          VoronoiRegionType *vregion =
-            dynamic_cast< VoronoiRegionType * >( cellPointer.GetPointer() );
+          auto *vregion = dynamic_cast< VoronoiRegionType * >( cellPointer.GetPointer() );
           if ( !vregion )
             {
             std::cerr << "CellularAggregate::Add() Failed to find a region"  << std::endl;
@@ -179,8 +177,7 @@ CellularAggregate< NSpaceDimension >
     throw exception;
     }
 
-  VoronoiRegionType *region =
-    dynamic_cast< VoronoiRegionType * >( cellPointer.GetPointer() );
+  auto *region = dynamic_cast< VoronoiRegionType * >( cellPointer.GetPointer() );
 
   voronoiPointer.TakeNoOwnership(region);
   if ( cellPointer.IsOwner() )
@@ -255,7 +252,7 @@ void
 CellularAggregate< NSpaceDimension >
 ::Add(CellBase *cellBase, const VectorType & perturbation)
 {
-  BioCellType *  cell = dynamic_cast< BioCellType * >( cellBase );
+  auto *  cell = dynamic_cast< BioCellType * >( cellBase );
   if(cell == nullptr)
     {
     itkExceptionMacro(<< "dynamic_cast failed.");
@@ -309,8 +306,7 @@ CellularAggregate< NSpaceDimension >
     bool neighborVoronoiExist = m_Mesh->GetCell(neighborId, cellPointer);
     if ( neighborVoronoiExist )
       {
-      VoronoiRegionType *region =
-        dynamic_cast< VoronoiRegionType * >( cellPointer.GetPointer() );
+      auto *region = dynamic_cast< VoronoiRegionType * >( cellPointer.GetPointer() );
 
       if ( !region )
         {
