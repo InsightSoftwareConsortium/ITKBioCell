@@ -60,8 +60,8 @@ Cell< NSpaceDimension >
 ::Mitosis(void)
 {
   // Create the two daughters.
-  Cell *siblingA = new Cell;
-  Cell *siblingB = new Cell;
+  auto *siblingA = new Cell;
+  auto *siblingB = new Cell;
 
   // Broad compensation for Volume distribution among daugthers.
   // The type of root should depend on the Dimension...
@@ -108,7 +108,7 @@ Cell< NSpaceDimension > *
 Cell< NSpaceDimension >
 ::CreateEgg(void)
 {
-  Cell *cell = new Cell;
+  auto *cell = new Cell;
 
   cell->m_ParentIdentifier = 0;
   cell->m_SelfIdentifier = 1;

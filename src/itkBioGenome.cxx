@@ -43,12 +43,11 @@ Genome
 ::Copy(const Genome & genome)
 {
   m_Map.clear();
-  typedef  Genome::MapType::const_iterator IteratorType;
 
-  IteratorType begin = genome.m_Map.begin();
-  IteratorType end   = genome.m_Map.end();
+  auto begin = genome.m_Map.begin();
+  auto end   = genome.m_Map.end();
 
-  IteratorType gene = begin;
+  auto gene = begin;
   while ( gene != end )
     {
     m_Map[gene->first] = gene->second;
