@@ -32,7 +32,7 @@ int itkBioGenomeTest( int, char * [] )
 
    const double tolerance = 1e-16;
 
-   const double inLevel = 0.74;
+   constexpr double inLevel = 0.74;
    genome.SetExpressionLevel("Cyclin",inLevel);
 
    const double outLevel = genome.GetExpressionLevel("Cyclin");
@@ -51,9 +51,9 @@ int itkBioGenomeTest( int, char * [] )
      return EXIT_FAILURE;
      }
 
-   const double value = 3.0;
-   const double threshold = 2.0;
-   const double slant = 5.0;
+   constexpr double value = 3.0;
+   constexpr double threshold = 2.0;
+   constexpr double slant = 5.0;
 
    const double sigmoid = itk::bio::Genome::Sigmoide( threshold, slant, value );
 
@@ -70,8 +70,8 @@ int itkBioGenomeTest( int, char * [] )
      }
 
 
-   const double cyclinLevel  = 3.45;
-   const double tubulinLevel = 2.79;
+   constexpr double cyclinLevel = 3.45;
+   constexpr double tubulinLevel = 2.79;
 
    genome.SetExpressionLevel("Cyclin" ,cyclinLevel );
    genome.SetExpressionLevel("Tubulin",tubulinLevel);

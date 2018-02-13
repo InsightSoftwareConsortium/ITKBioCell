@@ -176,9 +176,9 @@ int itkBioCellTest( int argc, char * argv[] )
   double chemoAttractantHighThreshold = atof(argv[11]);
   double chemoAttractantLevel = atof(argv[12]);
 
-  const unsigned int dimension2D = 2;
-  const unsigned int dimension3D = 3;
-  const unsigned int dimension4D = 4;
+  constexpr unsigned int dimension2D = 2;
+  constexpr unsigned int dimension3D = 3;
+  constexpr unsigned int dimension4D = 4;
 
   // Test for 2D
   BioCellHelper<dimension2D>::VectorType forceVector2D;

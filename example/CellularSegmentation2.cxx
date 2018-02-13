@@ -60,7 +60,7 @@ int main( int argc, char *argv[] )
 
   // Software Guide : BeginCodeSnippet
   using InternalPixelType = float;
-  const     unsigned int    Dimension = 3;
+  constexpr unsigned int Dimension = 3;
   using ImageType = itk::Image< InternalPixelType, Dimension >;
   // Software Guide : EndCodeSnippet
 
