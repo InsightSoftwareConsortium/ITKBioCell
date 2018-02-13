@@ -58,9 +58,9 @@ int main( int argc, char *argv[] )
   //  Software Guide : EndLatex
 
   // Software Guide : BeginCodeSnippet
-  typedef   float           InternalPixelType;
+  using InternalPixelType = float;
   const     unsigned int    Dimension = 2;
-  typedef itk::Image< InternalPixelType, Dimension >  ImageType;
+  using ImageType = itk::Image< InternalPixelType, Dimension >;
   // Software Guide : EndCodeSnippet
 
   //  Software Guide : BeginLatex
@@ -71,8 +71,8 @@ int main( int argc, char *argv[] )
   //  Software Guide : EndLatex
 
   // Software Guide : BeginCodeSnippet
-  typedef itk::bio::CellularAggregate< Dimension >  CellularAggregateType;
-  typedef CellularAggregateType::BioCellType        CellType;
+  using CellularAggregateType = itk::bio::CellularAggregate< Dimension >;
+  using CellType = CellularAggregateType::BioCellType;
   // Software Guide : EndCodeSnippet
 
 
@@ -89,7 +89,7 @@ int main( int argc, char *argv[] )
   // Software Guide : EndCodeSnippet
 
   // We instantiate reader and writer types
-  typedef  itk::ImageFileReader< ImageType > ReaderType;
+  using ReaderType = itk::ImageFileReader< ImageType >;
   ReaderType::Pointer reader = ReaderType::New();
   reader->SetFileName( argv[1] );
   std::cout << "Filename = " << argv[1] << std::endl;
@@ -235,7 +235,7 @@ int main( int argc, char *argv[] )
 
   //  Write the mesh to a file
   //
-  typedef itk::VTKPolyDataWriter< CellularAggregateType::MeshType > WriterType;
+  using WriterType = itk::VTKPolyDataWriter< CellularAggregateType::MeshType >;
 
   WriterType::Pointer writer = WriterType::New();
 

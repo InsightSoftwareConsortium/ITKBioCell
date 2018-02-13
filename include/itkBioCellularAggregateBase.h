@@ -40,11 +40,11 @@ class ITK_FORWARD_EXPORT CellBase;
 class ITKBioCell_EXPORT CellularAggregateBase:public Object
 {
 public:
-  /** Standard class typedefs. */
-  typedef CellularAggregateBase      Self;
-  typedef Object                     Superclass;
-  typedef SmartPointer< Self >       Pointer;
-  typedef SmartPointer< const Self > ConstPointer;
+  /** Standard class type alias. */
+  using Self = CellularAggregateBase;
+  using Superclass = Object;
+  using Pointer = SmartPointer< Self >;
+  using ConstPointer = SmartPointer< const Self >;
 
   /*** Run-time type information (and related methods). */
   itkTypeMacro(BioCellularAggregateBase, Object);
@@ -52,9 +52,9 @@ public:
   /** Method for creation through the object factory. */
   itkNewMacro(Self);
 
-  /** Convenient typedefs. */
-  typedef float          ImagePixelType;
-  typedef ImagePixelType SubstrateValueType;
+  /** Convenient type alias. */
+  using ImagePixelType = float;
+  using SubstrateValueType = ImagePixelType;
 
 public:
   virtual void Add(CellBase *cellA, CellBase *cellB, double perturbationLength);

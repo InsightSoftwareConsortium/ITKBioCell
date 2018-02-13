@@ -45,8 +45,8 @@ namespace bio
 class ITKBioCell_EXPORT Genome
 {
 public:
-  typedef   std::string                    GeneIdType;
-  typedef   std::map< GeneIdType, double > MapType;
+  using GeneIdType = std::string;
+  using MapType = std::map< GeneIdType, double >;
 
 public:
   Genome();

@@ -37,10 +37,10 @@ namespace bio
 class ITKBioCell_EXPORT CellBase
 {
 public:
-  typedef   itk::RGBPixel< float > ColorType;
-  typedef   itk::IdentifierType    IdentifierType;
-  typedef   itk::bio::Genome       GenomeType;
-  typedef   GenomeType::GeneIdType GeneIdType;
+  using ColorType = itk::RGBPixel< float >;
+  using IdentifierType = itk::IdentifierType;
+  using GenomeType = itk::bio::Genome;
+  using GeneIdType = GenomeType::GeneIdType;
 
   virtual ColorType GetColor() const;
 

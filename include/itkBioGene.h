@@ -43,17 +43,17 @@ namespace bio
 class ITKBioCell_EXPORT Gene
 {
 public:
-  typedef   std::string                          NameType;
-  typedef   std::string                          DomainType;
-  typedef   double                               AffinityType;
-  typedef   std::map< DomainType, AffinityType > ProteinDomainsType;
+  using NameType = std::string;
+  using DomainType = std::string;
+  using AffinityType = double;
+  using ProteinDomainsType = std::map< DomainType, AffinityType >;
 
-  typedef   struct {
+  using ControlDomainType = struct {
     DomainType m_Domain;
     bool m_Type;
-  }                                             ControlDomainType;
+  };
 
-  typedef   std::vector< ControlDomainType > GeneControlDomainsType;
+  using GeneControlDomainsType = std::vector< ControlDomainType >;
 
 public:
   Gene();
