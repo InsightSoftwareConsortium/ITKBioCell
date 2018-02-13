@@ -55,7 +55,7 @@ public:
   /** Method for creation through the object factory. */
   itkNewMacro(Self);
 
-  itkStaticConstMacro(SpaceDimension, unsigned int, NSpaceDimension);
+  static constexpr unsigned int SpaceDimension = NSpaceDimension;
 
   /*** Type to be used for data associated with each point in the mesh. */
   typedef    Cell< NSpaceDimension > BioCellType;
