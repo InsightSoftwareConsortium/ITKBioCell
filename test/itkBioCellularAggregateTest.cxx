@@ -23,7 +23,7 @@
 
 int itkBioCellularAggregateTest( int, char * [] )
 {
-   typedef itk::bio::CellularAggregate<4> CellularAggregateType;
+   using CellularAggregateType = itk::bio::CellularAggregate<4>;
 
    CellularAggregateType::Pointer  aggregate = CellularAggregateType::New();
    std::cout << aggregate << std::endl;

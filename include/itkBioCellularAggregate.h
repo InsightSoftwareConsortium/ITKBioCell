@@ -43,11 +43,11 @@ template< unsigned int NSpaceDimension = 3 >
 class ITK_TEMPLATE_EXPORT CellularAggregate:public CellularAggregateBase
 {
 public:
-  /** Standard class typedefs. */
-  typedef CellularAggregate          Self;
-  typedef CellularAggregateBase      Superclass;
-  typedef SmartPointer< Self >       Pointer;
-  typedef SmartPointer< const Self > ConstPointer;
+  /** Standard class type alias. */
+  using Self = CellularAggregate;
+  using Superclass = CellularAggregateBase;
+  using Pointer = SmartPointer< Self >;
+  using ConstPointer = SmartPointer< const Self >;
 
   /*** Run-time type information (and related methods). */
   itkTypeMacro(BioCellularAggregate, CellularAggregateBase);
@@ -58,56 +58,56 @@ public:
   static constexpr unsigned int SpaceDimension = NSpaceDimension;
 
   /*** Type to be used for data associated with each point in the mesh. */
-  typedef    Cell< NSpaceDimension > BioCellType;
-  typedef    BioCellType *           PointPixelType;
-  typedef    double                  CellPixelType;
+  using BioCellType = Cell< NSpaceDimension >;
+  using PointPixelType = BioCellType *;
+  using CellPixelType = double;
 
   /** Mesh Traits */
-  typedef DefaultDynamicMeshTraits<
+  using MeshTraits = DefaultDynamicMeshTraits<
     PointPixelType,                     // PixelType
     NSpaceDimension,                    // Points Dimension
     NSpaceDimension,                    // Max.Topological Dimension
     double,                             // Type for coordinates
     double,                             // Type for interpolation
     CellPixelType                       // Type for values in the cells
-    >  MeshTraits;
+    >;
 
   /** Mesh Traits */
-  typedef Mesh<  PointPixelType,
+  using MeshType = Mesh<  PointPixelType,
                  NSpaceDimension,
-                 MeshTraits  >               MeshType;
+                 MeshTraits  >;
 
   /** Mesh Associated types */
-  typedef typename MeshType::Pointer       MeshPointer;
-  typedef typename MeshType::ConstPointer  MeshConstPointer;
-  typedef typename MeshType::PointType     PointType;
-  typedef typename BioCellType::VectorType VectorType;
+  using MeshPointer = typename MeshType::Pointer;
+  using MeshConstPointer = typename MeshType::ConstPointer;
+  using PointType = typename MeshType::PointType;
+  using VectorType = typename BioCellType::VectorType;
 
-  typedef typename MeshType::PointsContainer              PointsContainer;
-  typedef typename MeshType::PointDataContainer           PointDataContainer;
-  typedef typename MeshType::CellsContainer               VoronoiRegionsContainer;
-  typedef typename PointsContainer::Iterator              PointsIterator;
-  typedef typename PointDataContainer::Iterator           CellsIterator;
-  typedef typename VoronoiRegionsContainer::Iterator      VoronoiIterator;
-  typedef typename PointsContainer::ConstIterator         PointsConstIterator;
-  typedef typename PointDataContainer::ConstIterator      CellsConstIterator;
-  typedef typename VoronoiRegionsContainer::ConstIterator VoronoiConstIterator;
-  typedef typename MeshType::CellAutoPointer              CellAutoPointer;
+  using PointsContainer = typename MeshType::PointsContainer;
+  using PointDataContainer = typename MeshType::PointDataContainer;
+  using VoronoiRegionsContainer = typename MeshType::CellsContainer;
+  using PointsIterator = typename PointsContainer::Iterator;
+  using CellsIterator = typename PointDataContainer::Iterator;
+  using VoronoiIterator = typename VoronoiRegionsContainer::Iterator;
+  using PointsConstIterator = typename PointsContainer::ConstIterator;
+  using CellsConstIterator = typename PointDataContainer::ConstIterator;
+  using VoronoiConstIterator = typename VoronoiRegionsContainer::ConstIterator;
+  using CellAutoPointer = typename MeshType::CellAutoPointer;
 
   /**   Voronoi region around a bio::Cell */
-  typedef CellInterface<
+  using CellInterfaceType = CellInterface<
     typename MeshType::CellPixelType,
-    typename MeshType::CellTraits >      CellInterfaceType;
+    typename MeshType::CellTraits >;
 
-  typedef PolygonCell<  CellInterfaceType >           VoronoiRegionType;
-  typedef typename VoronoiRegionType::SelfAutoPointer VoronoiRegionAutoPointer;
+  using VoronoiRegionType = PolygonCell<  CellInterfaceType >;
+  using VoronoiRegionAutoPointer = typename VoronoiRegionType::SelfAutoPointer;
 
-  /** Convenient typedefs. */
-  typedef float                                    ImagePixelType;
-  typedef Image< ImagePixelType, NSpaceDimension > SubstrateType;
-  typedef typename SubstrateType::Pointer          SubstratePointer;
-  typedef ImagePixelType                           SubstrateValueType;
-  typedef std::vector< SubstratePointer >          SubstratesVector;
+  /** Convenient type alias. */
+  using ImagePixelType = float;
+  using SubstrateType = Image< ImagePixelType, NSpaceDimension >;
+  using SubstratePointer = typename SubstrateType::Pointer;
+  using SubstrateValueType = ImagePixelType;
+  using SubstratesVector = std::vector< SubstratePointer >;
 
 public:
   unsigned int GetNumberOfCells() const;

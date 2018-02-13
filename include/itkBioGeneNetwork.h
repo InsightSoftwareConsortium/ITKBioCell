@@ -39,8 +39,8 @@ namespace bio
 class ITKBioCell_EXPORT GeneNetwork
 {
 public:
-  typedef   std::vector< float > ProteomeType;
-  typedef   std::vector< float > DomainsType;
+  using ProteomeType = std::vector< float >;
+  using DomainsType = std::vector< float >;
 
 public:
   GeneNetwork();

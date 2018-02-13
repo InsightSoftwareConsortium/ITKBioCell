@@ -556,7 +556,7 @@ void
 CellBase
 ::SecreteProducts(void)
 {
-  typedef ColorType::ValueType ColorValueType;
+  using ColorValueType = ColorType::ValueType;
 
   m_Color.SetRed( ColorValueType( m_Genome->GetExpressionLevel(RedGene) ) );
   m_Color.SetGreen( ColorValueType( m_Genome->GetExpressionLevel(GreenGene) ) );

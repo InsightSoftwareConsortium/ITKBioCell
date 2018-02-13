@@ -34,13 +34,12 @@ class BioCellHelper : public itk::bio::Cell< NSpaceDimension >
 
 public:
 
-  typedef BioCellHelper                               Self;
-  typedef itk::bio::Cell<NSpaceDimension>             Superclass;
-  typedef itk::SmartPointer<Self>                     Pointer;
-  typedef itk::SmartPointer<const Self>               ConstPointer;
+  using Self = BioCellHelper;
+  using Superclass = itk::bio::Cell<NSpaceDimension>;
+  using Pointer = itk::SmartPointer<Self>;
+  using ConstPointer = itk::SmartPointer<const Self>;
 
-  typedef typename itk::bio::Cell< NSpaceDimension >::VectorType
-    VectorType;
+  using VectorType = typename itk::bio::Cell< NSpaceDimension >::VectorType;
 
 
   static int Exercise(VectorType forceVector,
@@ -60,7 +59,7 @@ public:
     std::cout << "Testing " << NSpaceDimension << "D..." << std::endl;
 
 
-    typedef itk::bio::Cell<NSpaceDimension> CellType;
+    using CellType = itk::bio::Cell<NSpaceDimension>;
 
     CellType * egg = CellType::CreateEgg();
 

@@ -39,10 +39,10 @@ template< unsigned int NSpaceDimension = 3 >
 class ITK_TEMPLATE_EXPORT Cell:public CellBase
 {
 public:
-  typedef   CellBase Superclass;
+  using Superclass = CellBase;
 
-  typedef   itk::Vector< double, NSpaceDimension > VectorType;
-  typedef   itk::Point< double, NSpaceDimension >  PointType;
+  using VectorType = itk::Vector< double, NSpaceDimension >;
+  using PointType = itk::Point< double, NSpaceDimension >;
 
   friend class CellularAggregateBase; // need to give access to the constructor.
 
