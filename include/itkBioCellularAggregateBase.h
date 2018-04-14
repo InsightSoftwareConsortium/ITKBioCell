@@ -40,6 +40,8 @@ class ITK_FORWARD_EXPORT CellBase;
 class ITKBioCell_EXPORT CellularAggregateBase:public Object
 {
 public:
+  ITK_DISALLOW_COPY_AND_ASSIGN(CellularAggregateBase);
+
   /** Standard class type alias. */
   using Self = CellularAggregateBase;
   using Superclass = Object;
@@ -67,8 +69,6 @@ public:
 protected:
   CellularAggregateBase();
   ~CellularAggregateBase() override;
-  CellularAggregateBase(const Self &);
-  void PrintSelf(std::ostream & os, Indent indent) const override;
 };
 } // end namespace bio
 } // end namespace itk

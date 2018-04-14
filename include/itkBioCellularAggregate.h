@@ -43,6 +43,8 @@ template< unsigned int NSpaceDimension = 3 >
 class ITK_TEMPLATE_EXPORT CellularAggregate:public CellularAggregateBase
 {
 public:
+  ITK_DISALLOW_COPY_AND_ASSIGN(CellularAggregate);
+
   /** Standard class type alias. */
   using Self = CellularAggregate;
   using Superclass = CellularAggregateBase;
@@ -148,8 +150,6 @@ public:
 protected:
   CellularAggregate();
   ~CellularAggregate() override;
-  CellularAggregate(const Self &);
-  void operator=(const Self &);
 
   void PrintSelf(std::ostream & os, Indent indent) const override;
 
