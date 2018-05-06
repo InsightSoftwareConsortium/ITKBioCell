@@ -52,13 +52,5 @@ CellularAggregateBase
 ::Remove(CellBase *)
 {}
 
-void
-CellularAggregateBase
-::PrintSelf(std::ostream & os, itk::Indent indent) const
-{
-  Superclass::PrintSelf(os, indent);
-
-  os << "Cellular Aggregate Base " << std::endl;
-}
 } // end namespace bio
 } // end namespace itk
