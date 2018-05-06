@@ -23,7 +23,7 @@
 #include <vector>
 #include <map>
 #include "itkMacro.h"
-#include "ITKBioCellExport.h"
+#include "BioCellExport.h"
 
 namespace itk
 {
@@ -40,7 +40,7 @@ namespace bio
  *
  * \ingroup ITKBioCell
  */
-class ITKBioCell_EXPORT Gene
+class BioCell_EXPORT Gene
 {
 public:
   using NameType = std::string;

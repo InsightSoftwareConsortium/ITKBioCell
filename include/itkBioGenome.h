@@ -23,7 +23,7 @@
 #include "itkWindows.h"
 #endif
 #include "itkMacro.h"
-#include "ITKBioCellExport.h"
+#include "BioCellExport.h"
 
 #include <map>
 #include <string>
@@ -42,7 +42,7 @@ namespace bio
  *
  * \ingroup ITKBioCell
  */
-class ITKBioCell_EXPORT Genome
+class BioCell_EXPORT Genome
 {
 public:
   using GeneIdType = std::string;
