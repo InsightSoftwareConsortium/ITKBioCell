@@ -21,7 +21,7 @@
 #include "itkIntTypes.h"
 #include "itkObject.h"
 #include "itkObjectFactory.h"
-#include "ITKBioCellExport.h"
+#include "BioCellExport.h"
 
 namespace itk
 {
@@ -37,7 +37,7 @@ class ITK_FORWARD_EXPORT CellBase;
  *
  * \ingroup ITKBioCell
  */
-class ITKBioCell_EXPORT CellularAggregateBase:public Object
+class BioCell_EXPORT CellularAggregateBase:public Object
 {
 public:
   ITK_DISALLOW_COPY_AND_ASSIGN(CellularAggregateBase);
