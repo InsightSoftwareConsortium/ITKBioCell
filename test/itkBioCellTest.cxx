@@ -65,54 +65,54 @@ public:
 
     // Test Set/Get methods
     //CellType::SetRadius( radius );
-    //TEST_SET_GET_VALUE(radius, egg->GetRadius());
+    //ITK_TEST_SET_GET_VALUE(radius, egg->GetRadius());
     egg->GetRadius();
 
     CellType::SetDefaultRadius( defaultRadius );
-    //TEST_SET_GET_VALUE(defaultRadius, egg->GetDefaultRadius());
+    //ITK_TEST_SET_GET_VALUE(defaultRadius, egg->GetDefaultRadius());
 
     CellType::SetGrowthRadiusIncrement( growthRadiusIncrement );
-    //TEST_SET_GET_VALUE(growthRadiusIncrement, egg->GetGrowthRadiusIncrement());
+    //ITK_TEST_SET_GET_VALUE(growthRadiusIncrement, egg->GetGrowthRadiusIncrement());
 
     CellType::SetGrowthRadiusLimit( growthRadiusLimit );
-    TEST_SET_GET_VALUE(growthRadiusLimit, egg->GetGrowthRadiusLimit());
+    ITK_TEST_SET_GET_VALUE(growthRadiusLimit, egg->GetGrowthRadiusLimit());
 
     CellType::SetNutrientSelfRepairLevel( nutrientSelfRepairLevel );
-    /*TEST_SET_GET_VALUE(nutrientSelfRepairLevel,
+    /*ITK_TEST_SET_GET_VALUE(nutrientSelfRepairLevel,
       egg->GetNutrientSelfRepairLevel());*/
 
     CellType::SetEnergySelfRepairLevel( energySelfRepairLevel );
-    //TEST_SET_GET_VALUE(energySelfRepairLevel, egg->GetEnergySelfRepairLevel());
+    //ITK_TEST_SET_GET_VALUE(energySelfRepairLevel, egg->GetEnergySelfRepairLevel());
 
     CellType::SetGrowthMaximumLatencyTime( growthMaximumLatencyTime );
-    TEST_SET_GET_VALUE(growthMaximumLatencyTime,
+    ITK_TEST_SET_GET_VALUE(growthMaximumLatencyTime,
       egg->GetGrowthMaximumLatencyTime());
 
     CellType::SetDivisionMaximumLatencyTime( divisionMaximumLatencyTime );
-    TEST_SET_GET_VALUE(divisionMaximumLatencyTime,
+    ITK_TEST_SET_GET_VALUE(divisionMaximumLatencyTime,
       egg->GetDivisionMaximumLatencyTime());
 
     CellType::SetMaximumGenerationLimit( maximumGenerationLimit );
-    /*TEST_SET_GET_VALUE(maximumGenerationLimit,
+    /*ITK_TEST_SET_GET_VALUE(maximumGenerationLimit,
       egg->GetMaximumGenerationLimit());*/
 
     CellType::SetChemoAttractantLowThreshold( chemoAttractantLowThreshold );
-    /*TEST_SET_GET_VALUE(chemoAttractantLowThreshold,
+    /*ITK_TEST_SET_GET_VALUE(chemoAttractantLowThreshold,
       egg->GetChemoAttractantLowThreshold());*/
 
     CellType::SetChemoAttractantHighThreshold( chemoAttractantHighThreshold );
-    /*TEST_SET_GET_VALUE(chemoAttractantHighThreshold,
+    /*ITK_TEST_SET_GET_VALUE(chemoAttractantHighThreshold,
       egg->GetChemoAttractantHighThreshold());*/
 
     //CellType::SetChemoAttractantLevel( chemoAttractantLevel );
-    //TEST_SET_GET_VALUE(chemoAttractantLevel, egg->GetChemoAttractantLevel());
+    //ITK_TEST_SET_GET_VALUE(chemoAttractantLevel, egg->GetChemoAttractantLevel());
 
     egg->ClearForce();
     egg->AddForce(forceVector);
 
     typename CellType::VectorType forceVector2 = egg->GetForce();
 
-    TEST_EXPECT_EQUAL(forceVector, forceVector2);
+    ITK_TEST_EXPECT_EQUAL(forceVector, forceVector2);
 
     egg->GetSelfIdentifier();
     egg->GetParentIdentifier();
@@ -125,7 +125,7 @@ public:
 
     egg->SetCellularAggregate(cell);
 
-    TEST_SET_GET_VALUE(cell, egg->GetCellularAggregate());
+    ITK_TEST_SET_GET_VALUE(cell, egg->GetCellularAggregate());
 
     // Complete the cell life cycle
     //while(egg->CheckPointApoptosis())
