@@ -36,7 +36,7 @@ CellularAggregate< NSpaceDimension >
 
   m_Mesh = MeshType::New();
 
-  m_Mesh->SetCellsAllocationMethod(MeshType::CellsAllocatedDynamicallyCellByCell);
+  m_Mesh->SetCellsAllocationMethod(MeshType::CellsAllocationMethodType::CellsAllocatedDynamicallyCellByCell);
   m_Mesh->SetPoints( PointsContainer::New() );
   m_Mesh->SetPointData( PointDataContainer::New() );
   m_Mesh->SetCells( VoronoiRegionsContainer::New() );
