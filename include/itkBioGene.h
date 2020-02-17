@@ -62,7 +62,7 @@ public:
   virtual ~Gene();
 
   void
-  Copy(const Gene & genome);
+  Copy(const Gene & gene);
 
   /** Set/Get the name of the gene. This uses a std::string type. */
   void

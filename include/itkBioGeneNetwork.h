@@ -48,7 +48,7 @@ public:
   virtual ~GeneNetwork();
 
   void
-  Copy(const GeneNetwork & genome);
+  Copy(const GeneNetwork & geneNetwork);
 
 private:
   // This array contains the concentrations of each protein
