@@ -55,7 +55,7 @@ Cell<NSpaceDimension>::~Cell()
 
 template <unsigned int NSpaceDimension>
 void
-Cell<NSpaceDimension>::Mitosis(void)
+Cell<NSpaceDimension>::Mitosis()
 {
   // Create the two daughters.
   auto * siblingA = new Cell;
@@ -103,7 +103,7 @@ Cell<NSpaceDimension>::Mitosis(void)
  */
 template <unsigned int NSpaceDimension>
 Cell<NSpaceDimension> *
-Cell<NSpaceDimension>::CreateEgg(void)
+Cell<NSpaceDimension>::CreateEgg()
 {
   auto * cell = new Cell;
 
@@ -124,7 +124,7 @@ Cell<NSpaceDimension>::CreateEgg(void)
  */
 template <unsigned int NSpaceDimension>
 void
-Cell<NSpaceDimension>::ClearForce(void)
+Cell<NSpaceDimension>::ClearForce()
 {
   m_Force.Fill(0.0f);
   m_Pressure = 0.0f;
@@ -135,7 +135,7 @@ Cell<NSpaceDimension>::ClearForce(void)
  */
 template <unsigned int NSpaceDimension>
 const typename Cell<NSpaceDimension>::VectorType &
-Cell<NSpaceDimension>::GetForce(void) const
+Cell<NSpaceDimension>::GetForce() const
 {
   return m_Force;
 }
@@ -145,7 +145,7 @@ Cell<NSpaceDimension>::GetForce(void) const
  */
 template <unsigned int NSpaceDimension>
 CellularAggregateBase *
-Cell<NSpaceDimension>::GetCellularAggregate(void)
+Cell<NSpaceDimension>::GetCellularAggregate()
 {
   return m_Aggregate;
 }
@@ -155,7 +155,7 @@ Cell<NSpaceDimension>::GetCellularAggregate(void)
  */
 template <unsigned int NSpaceDimension>
 const CellularAggregateBase *
-Cell<NSpaceDimension>::GetCellularAggregate(void) const
+Cell<NSpaceDimension>::GetCellularAggregate() const
 {
   return m_Aggregate;
 }
@@ -195,7 +195,7 @@ Cell<NSpaceDimension>::AddForce(const VectorType & force)
  */
 template <unsigned int NSpaceDimension>
 void
-Cell<NSpaceDimension>::Apoptosis(void)
+Cell<NSpaceDimension>::Apoptosis()
 {
   // This call will release the Genomes
   this->Superclass::Apoptosis();
@@ -218,7 +218,7 @@ Cell<NSpaceDimension>::Apoptosis(void)
  */
 template <unsigned int NSpaceDimension>
 void
-Cell<NSpaceDimension>::AdvanceTimeStep(void)
+Cell<NSpaceDimension>::AdvanceTimeStep()
 {
   // get input from the environment
   this->ReceptorsReading();
@@ -307,7 +307,7 @@ Cell<NSpaceDimension>::AdvanceTimeStep(void)
  */
 template <unsigned int NSpaceDimension>
 void
-Cell<NSpaceDimension>::ReceptorsReading(void)
+Cell<NSpaceDimension>::ReceptorsReading()
 {
   m_Genome->SetExpressionLevel(Pressurin, m_Pressure);
 

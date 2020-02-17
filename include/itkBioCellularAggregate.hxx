@@ -55,7 +55,7 @@ CellularAggregate<NSpaceDimension>::~CellularAggregate()
 
 template <unsigned int NSpaceDimension>
 unsigned int
-CellularAggregate<NSpaceDimension>::GetNumberOfCells(void) const
+CellularAggregate<NSpaceDimension>::GetNumberOfCells() const
 {
   return m_Mesh->GetPointData()->Size();
 }
@@ -312,7 +312,7 @@ CellularAggregate<NSpaceDimension>::Add(CellBase * cellBase, const VectorType & 
 
 template <unsigned int NSpaceDimension>
 void
-CellularAggregate<NSpaceDimension>::AdvanceTimeStep(void)
+CellularAggregate<NSpaceDimension>::AdvanceTimeStep()
 {
   if (m_Iteration % m_ClosestPointComputationInterval == 0)
   {
@@ -345,7 +345,7 @@ CellularAggregate<NSpaceDimension>::AdvanceTimeStep(void)
 
 template <unsigned int NSpaceDimension>
 void
-CellularAggregate<NSpaceDimension>::KillAll(void)
+CellularAggregate<NSpaceDimension>::KillAll()
 {
   if (!m_Mesh)
   {
@@ -366,7 +366,7 @@ CellularAggregate<NSpaceDimension>::KillAll(void)
 
 template <unsigned int NSpaceDimension>
 void
-CellularAggregate<NSpaceDimension>::ClearForces(void)
+CellularAggregate<NSpaceDimension>::ClearForces()
 {
   CellsIterator cell = m_Mesh->GetPointData()->Begin();
   CellsIterator end = m_Mesh->GetPointData()->End();
@@ -380,7 +380,7 @@ CellularAggregate<NSpaceDimension>::ClearForces(void)
 
 template <unsigned int NSpaceDimension>
 void
-CellularAggregate<NSpaceDimension>::UpdatePositions(void)
+CellularAggregate<NSpaceDimension>::UpdatePositions()
 {
   CellsConstIterator cellIt = m_Mesh->GetPointData()->Begin();
   CellsConstIterator end = m_Mesh->GetPointData()->End();
@@ -406,7 +406,7 @@ CellularAggregate<NSpaceDimension>::UpdatePositions(void)
 
 template <unsigned int NSpaceDimension>
 void
-CellularAggregate<NSpaceDimension>::ComputeForces(void)
+CellularAggregate<NSpaceDimension>::ComputeForces()
 {
   // Clear all the force accumulators
   this->ClearForces();
@@ -476,7 +476,7 @@ CellularAggregate<NSpaceDimension>::ComputeForces(void)
 
 template <unsigned int NSpaceDimension>
 void
-CellularAggregate<NSpaceDimension>::ComputeClosestPoints(void)
+CellularAggregate<NSpaceDimension>::ComputeClosestPoints()
 {
   PointsConstIterator beginPoints = m_Mesh->GetPoints()->Begin();
   PointsConstIterator endPoints = m_Mesh->GetPoints()->End();
@@ -584,7 +584,7 @@ CellularAggregate<NSpaceDimension>::AddSubstrate(SubstrateType * substrate)
 
 template <unsigned int NSpaceDimension>
 typename CellularAggregate<NSpaceDimension>::SubstratesVector &
-CellularAggregate<NSpaceDimension>::GetSubstrates(void)
+CellularAggregate<NSpaceDimension>::GetSubstrates()
 {
   return m_Substrates;
 }

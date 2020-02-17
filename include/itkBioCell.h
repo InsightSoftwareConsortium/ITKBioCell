@@ -62,7 +62,7 @@ public:
   Mitosis();
 
   void
-  Apoptosis(void) override;
+  Apoptosis() override;
 
   virtual void
   ReceptorsReading();
@@ -77,7 +77,7 @@ public:
   GetCellularAggregate() const;
 
   static const char *
-  GetSpeciesName(void)
+  GetSpeciesName()
   {
     return "Primitive Cell";
   }
