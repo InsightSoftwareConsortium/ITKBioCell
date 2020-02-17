@@ -107,7 +107,7 @@ public:
 protected:
   VectorType m_Force;
 
-  CellularAggregateBase * m_Aggregate;
+  CellularAggregateBase * m_Aggregate{ nullptr };
 };
 } // end namespace bio
 } // end namespace itk
