@@ -113,7 +113,7 @@ CellBase ::~CellBase()
  *    DNA Replication
  */
 void
-CellBase ::DNAReplication(void)
+CellBase ::DNAReplication()
 {
   m_GenomeCopy = new GenomeType;
   m_GenomeCopy->Copy(*m_Genome);
@@ -124,7 +124,7 @@ CellBase ::DNAReplication(void)
  *    This is the cellular equivalent of suicide.
  */
 void
-CellBase ::Apoptosis(void)
+CellBase ::Apoptosis()
 {
   delete m_Genome;
   m_Genome = nullptr;
@@ -140,7 +140,7 @@ CellBase ::Apoptosis(void)
  *    required for growth are satisfied.
  */
 bool
-CellBase ::CheckPointGrowth(void)
+CellBase ::CheckPointGrowth()
 {
   return true;
 }
@@ -154,7 +154,7 @@ CellBase ::CheckPointGrowth(void)
  *    for DNA replication are satisfied.
  */
 bool
-CellBase ::CheckPointDNAReplication(void)
+CellBase ::CheckPointDNAReplication()
 {
   // radius & teleomerasa counting should be removed from here
   // and be related to Cdk expression by using proteins like P53
@@ -200,7 +200,7 @@ CellBase ::CheckPointDNAReplication(void)
  *    genomes satisfy the quality standards of a living cell.
  */
 bool
-CellBase ::CheckPointMitosis(void)
+CellBase ::CheckPointMitosis()
 {
   const bool DNAProofRead = (m_GenomeCopy && m_Genome);
 
@@ -220,7 +220,7 @@ CellBase ::CheckPointMitosis(void)
  *    The cell will die in apoptosis.
  */
 bool
-CellBase ::CheckPointApoptosis(void)
+CellBase ::CheckPointApoptosis()
 {
   bool executeApoptosis;
 
@@ -240,7 +240,7 @@ CellBase ::CheckPointApoptosis(void)
  *    All this should go away once we setup Gene Networks for controlling the cell.
  */
 void
-CellBase ::Initialize(void)
+CellBase ::Initialize()
 {
   CellBase::SetGrowthMaximumLatencyTime(100);
   CellBase::SetDivisionMaximumLatencyTime(100);
@@ -265,7 +265,7 @@ CellBase ::Initialize(void)
  *  this cell from its list at the earliest occasion
  */
 void
-CellBase ::MarkForRemoval(void)
+CellBase ::MarkForRemoval()
 {
   m_MarkedForRemoval = true;
 }
@@ -276,7 +276,7 @@ CellBase ::MarkForRemoval(void)
  *  this cell from its list at the earliest occasion
  */
 bool
-CellBase ::MarkedForRemoval(void) const
+CellBase ::MarkedForRemoval() const
 {
   return m_MarkedForRemoval;
 }
@@ -291,7 +291,7 @@ CellBase ::MarkedForRemoval(void) const
  *   of cell's radius
  */
 void
-CellBase ::Grow(void)
+CellBase ::Grow()
 {
   if (m_GrowthLatencyTime)
   {
@@ -322,7 +322,7 @@ CellBase ::SetGrowthMaximumLatencyTime(SizeValueType latency)
  *    Get Growth Latency Time
  */
 SizeValueType
-CellBase ::GetGrowthMaximumLatencyTime(void)
+CellBase ::GetGrowthMaximumLatencyTime()
 {
   return CellBase::GrowthMaximumLatencyTime;
 }
@@ -331,7 +331,7 @@ CellBase ::GetGrowthMaximumLatencyTime(void)
  *    Return the ID  of this cell
  */
 CellBase::IdentifierType
-CellBase ::GetSelfIdentifier(void) const
+CellBase ::GetSelfIdentifier() const
 {
   return m_SelfIdentifier;
 }
@@ -340,7 +340,7 @@ CellBase ::GetSelfIdentifier(void) const
  *    Return the ID  of the parent cell
  */
 CellBase::IdentifierType
-CellBase ::GetParentIdentifier(void) const
+CellBase ::GetParentIdentifier() const
 {
   return m_ParentIdentifier;
 }
@@ -349,7 +349,7 @@ CellBase ::GetParentIdentifier(void) const
  *    Return the radius
  */
 double
-CellBase ::GetRadius(void) const
+CellBase ::GetRadius() const
 {
   return m_Radius;
 }
@@ -358,7 +358,7 @@ CellBase ::GetRadius(void) const
  *    Return the Color
  */
 CellBase::ColorType
-CellBase ::GetColor(void) const
+CellBase ::GetColor() const
 {
   return m_Color;
 }
@@ -424,7 +424,7 @@ CellBase ::SetMaximumGenerationLimit(SizeValueType generationLimit)
  *    cellular aggregate
  */
 double
-CellBase ::GetGrowthRadiusLimit(void)
+CellBase ::GetGrowthRadiusLimit()
 {
   return GrowthRadiusLimit;
 }
@@ -445,7 +445,7 @@ CellBase ::SetGrowthRadiusIncrement(double value)
  *    Ingestion of nutrients
  */
 void
-CellBase ::NutrientsIntake(void)
+CellBase ::NutrientsIntake()
 {
   m_NutrientsReserveLevel += DefaultNutrientsIntake;
 }
@@ -454,7 +454,7 @@ CellBase ::NutrientsIntake(void)
  *    Acquisition of energy
  */
 void
-CellBase ::EnergyIntake(void)
+CellBase ::EnergyIntake()
 {
   m_EnergyReserveLevel += DefaultEnergyIntake;
 }
@@ -466,7 +466,7 @@ CellBase ::EnergyIntake(void)
  *   see: http://www.ingeneue.org  for details
  */
 void
-CellBase ::ComputeGeneNetwork(void)
+CellBase ::ComputeGeneNetwork()
 {
   // Default level of pigments
   m_Genome->SetExpressionLevel(CellBase::RedGene, 1.0);
@@ -521,7 +521,7 @@ CellBase ::ComputeGeneNetwork(void)
  *   the gene network update
  */
 void
-CellBase ::SecreteProducts(void)
+CellBase ::SecreteProducts()
 {
   using ColorValueType = ColorType::ValueType;
 
@@ -543,7 +543,7 @@ CellBase ::SetDefaultColor(const ColorType & color)
  *    Reset the counter
  */
 void
-CellBase ::ResetCounter(void)
+CellBase ::ResetCounter()
 {
   Counter = 0;
 }
@@ -561,7 +561,7 @@ CellBase ::SetDivisionMaximumLatencyTime(SizeValueType latency)
  *    Get Division Latency Time
  */
 SizeValueType
-CellBase ::GetDivisionMaximumLatencyTime(void)
+CellBase ::GetDivisionMaximumLatencyTime()
 {
   return CellBase::DivisionMaximumLatencyTime;
 }
