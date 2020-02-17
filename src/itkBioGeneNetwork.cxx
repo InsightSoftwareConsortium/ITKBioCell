@@ -25,12 +25,12 @@ namespace bio
 /**
  *    Constructor
  */
-GeneNetwork ::GeneNetwork() {}
+GeneNetwork ::GeneNetwork() = default;
 
 /**
  *    Destructor
  */
-GeneNetwork ::~GeneNetwork() {}
+GeneNetwork ::~GeneNetwork() = default;
 
 /**
  *    Copy from another genome

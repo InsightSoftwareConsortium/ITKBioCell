@@ -25,12 +25,12 @@ namespace bio
 /**
  *    Constructor
  */
-Genome ::Genome() {}
+Genome ::Genome() = default;
 
 /**
  *    Destructor
  */
-Genome ::~Genome() {}
+Genome ::~Genome() = default;
 
 /**
  *    Copy from another genome

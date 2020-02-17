@@ -22,9 +22,9 @@ namespace itk
 {
 namespace bio
 {
-CellularAggregateBase ::CellularAggregateBase() {}
+CellularAggregateBase ::CellularAggregateBase() = default;
 
-CellularAggregateBase ::~CellularAggregateBase() {}
+CellularAggregateBase ::~CellularAggregateBase() = default;
 
 /** The actual implementation is provided in the derived classes where the Cell
  * dimension is known. */

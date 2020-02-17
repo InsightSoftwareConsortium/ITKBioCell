@@ -33,7 +33,7 @@ Gene ::Gene()
 /**
  *    Destructor
  */
-Gene ::~Gene() {}
+Gene ::~Gene() = default;
 
 /**
  *    Copy from another genome
