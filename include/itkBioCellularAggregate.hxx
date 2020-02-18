@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  *  limitations under the License.
  *
  *=========================================================================*/
+
 #ifndef itkBioCellularAggregate_hxx
 #define itkBioCellularAggregate_hxx
 
@@ -35,7 +36,7 @@ CellularAggregate<NSpaceDimension>::CellularAggregate()
 
   m_Mesh = MeshType::New();
 
-  m_Mesh->SetCellsAllocationMethod(MeshType::CellsAllocationMethodType::CellsAllocatedDynamicallyCellByCell);
+  m_Mesh->SetCellsAllocationMethod(MeshEnums::MeshClassCellsAllocationMethod::CellsAllocatedDynamicallyCellByCell);
   m_Mesh->SetPoints(PointsContainer::New());
   m_Mesh->SetPointData(PointDataContainer::New());
   m_Mesh->SetCells(VoronoiRegionsContainer::New());

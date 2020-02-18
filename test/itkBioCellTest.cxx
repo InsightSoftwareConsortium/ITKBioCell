@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ public:
     // TEST_SET_GET_VALUE(growthRadiusIncrement, egg->GetGrowthRadiusIncrement());
 
     CellType::SetGrowthRadiusLimit(growthRadiusLimit);
-    TEST_SET_GET_VALUE(growthRadiusLimit, egg->GetGrowthRadiusLimit());
+    ITK_TEST_SET_GET_VALUE(growthRadiusLimit, egg->GetGrowthRadiusLimit());
 
     CellType::SetNutrientSelfRepairLevel(nutrientSelfRepairLevel);
     /*TEST_SET_GET_VALUE(nutrientSelfRepairLevel,
@@ -85,10 +85,10 @@ public:
     // TEST_SET_GET_VALUE(energySelfRepairLevel, egg->GetEnergySelfRepairLevel());
 
     CellType::SetGrowthMaximumLatencyTime(growthMaximumLatencyTime);
-    TEST_SET_GET_VALUE(growthMaximumLatencyTime, egg->GetGrowthMaximumLatencyTime());
+    ITK_TEST_SET_GET_VALUE(growthMaximumLatencyTime, egg->GetGrowthMaximumLatencyTime());
 
     CellType::SetDivisionMaximumLatencyTime(divisionMaximumLatencyTime);
-    TEST_SET_GET_VALUE(divisionMaximumLatencyTime, egg->GetDivisionMaximumLatencyTime());
+    ITK_TEST_SET_GET_VALUE(divisionMaximumLatencyTime, egg->GetDivisionMaximumLatencyTime());
 
     CellType::SetMaximumGenerationLimit(maximumGenerationLimit);
     /*TEST_SET_GET_VALUE(maximumGenerationLimit,
@@ -110,7 +110,7 @@ public:
 
     typename CellType::VectorType forceVector2 = egg->GetForce();
 
-    TEST_EXPECT_EQUAL(forceVector, forceVector2);
+    ITK_TEST_EXPECT_EQUAL(forceVector, forceVector2);
 
     egg->GetSelfIdentifier();
     egg->GetParentIdentifier();
@@ -122,7 +122,7 @@ public:
 
     egg->SetCellularAggregate(cell);
 
-    TEST_SET_GET_VALUE(cell, egg->GetCellularAggregate());
+    ITK_TEST_SET_GET_VALUE(cell, egg->GetCellularAggregate());
 
     // Complete the cell life cycle
     // while(egg->CheckPointApoptosis())
