@@ -24,43 +24,37 @@ namespace bio
 /**
  *    Constructor
  */
-Genome
-::Genome()
-{}
+Genome ::Genome() {}
 
 /**
  *    Destructor
  */
-Genome
-::~Genome()
-{}
+Genome ::~Genome() {}
 
 /**
  *    Copy from another genome
  */
 void
-Genome
-::Copy(const Genome & genome)
+Genome ::Copy(const Genome & genome)
 {
   m_Map.clear();
 
   auto begin = genome.m_Map.begin();
-  auto end   = genome.m_Map.end();
+  auto end = genome.m_Map.end();
 
   auto gene = begin;
-  while ( gene != end )
-    {
+  while (gene != end)
+  {
     m_Map[gene->first] = gene->second;
     ++gene;
-    }
+  }
 }
 
 /**
  *    Insert a gene in the genome
  */
 void
-Genome
-::InsertGene(const GeneIdType & geneId)
+Genome ::InsertGene(const GeneIdType & geneId)
 {
   // operator[] will create the geneId if
   // it doesn't exist yet.
@@ -72,8 +66,7 @@ Genome
  *    Knockout a gene in the genome
  */
 void
-Genome
-::KnockOutGene(const GeneIdType & geneId)
+Genome ::KnockOutGene(const GeneIdType & geneId)
 {
   m_Map.erase(geneId);
 }
@@ -82,8 +75,7 @@ Genome
  *    Return the level of expression of a particular gene
  */
 double
-Genome
-::GetExpressionLevel(const GeneIdType & geneId)
+Genome ::GetExpressionLevel(const GeneIdType & geneId)
 {
   return m_Map[geneId];
 }
@@ -92,10 +84,9 @@ Genome
  *    Set the level of expression of a particular gene
  */
 void
-Genome
-::SetExpressionLevel(const GeneIdType & geneId, double level)
+Genome ::SetExpressionLevel(const GeneIdType & geneId, double level)
 {
   m_Map[geneId] = level;
 }
-}  // end namespace bio
-}  // end namespace itk
+} // end namespace bio
+} // end namespace itk

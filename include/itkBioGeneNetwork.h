@@ -39,17 +39,17 @@ namespace bio
 class BioCell_EXPORT GeneNetwork
 {
 public:
-  using ProteomeType = std::vector< float >;
-  using DomainsType = std::vector< float >;
+  using ProteomeType = std::vector<float>;
+  using DomainsType = std::vector<float>;
 
 public:
   GeneNetwork();
   virtual ~GeneNetwork();
 
-  void Copy(const GeneNetwork & genome);
+  void
+  Copy(const GeneNetwork & genome);
 
 private:
-
   // This array contains the concentrations of each protein
   // in the cell at a certain time.
   ProteomeType m_ProteinConcentration;

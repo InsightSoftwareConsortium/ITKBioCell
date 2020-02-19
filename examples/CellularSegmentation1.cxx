@@ -39,15 +39,16 @@
 #include "itkVTKPolyDataWriter.h"
 
 
-int main( int argc, char *argv[] )
+int
+main(int argc, char * argv[])
 {
-  if( argc < 8 )
-    {
+  if (argc < 8)
+  {
     std::cerr << "Missing Parameters " << std::endl;
     std::cerr << "Usage: " << argv[0];
     std::cerr << " inputImage  seedX seedY lowThreshold highThreshold iterations outputMesh.vtk" << std::endl;
     return EXIT_FAILURE;
-    }
+  }
 
   //  Software Guide : BeginLatex
   //
@@ -60,7 +61,7 @@ int main( int argc, char *argv[] )
   // Software Guide : BeginCodeSnippet
   using InternalPixelType = float;
   constexpr unsigned int Dimension = 2;
-  using ImageType = itk::Image< InternalPixelType, Dimension >;
+  using ImageType = itk::Image<InternalPixelType, Dimension>;
   // Software Guide : EndCodeSnippet
 
   //  Software Guide : BeginLatex
@@ -71,7 +72,7 @@ int main( int argc, char *argv[] )
   //  Software Guide : EndLatex
 
   // Software Guide : BeginCodeSnippet
-  using CellularAggregateType = itk::bio::CellularAggregate< Dimension >;
+  using CellularAggregateType = itk::bio::CellularAggregate<Dimension>;
   using CellType = CellularAggregateType::BioCellType;
   // Software Guide : EndCodeSnippet
 
@@ -84,26 +85,25 @@ int main( int argc, char *argv[] )
   //  Software Guide : EndLatex
 
   // Software Guide : BeginCodeSnippet
-  CellularAggregateType::Pointer cellularAggregate
-                                               = CellularAggregateType::New();
+  CellularAggregateType::Pointer cellularAggregate = CellularAggregateType::New();
   // Software Guide : EndCodeSnippet
 
   // We instantiate reader and writer types
-  using ReaderType = itk::ImageFileReader< ImageType >;
+  using ReaderType = itk::ImageFileReader<ImageType>;
   ReaderType::Pointer reader = ReaderType::New();
-  reader->SetFileName( argv[1] );
+  reader->SetFileName(argv[1]);
   std::cout << "Filename = " << argv[1] << std::endl;
 
   try
-    {
+  {
     reader->Update();
-    }
-  catch( itk::ExceptionObject & excep )
-    {
+  }
+  catch (itk::ExceptionObject & excep)
+  {
     std::cerr << "Exception caught !" << std::endl;
     std::cerr << excep << std::endl;
     return EXIT_FAILURE;
-    }
+  }
 
   //  Software Guide : BeginLatex
   //
@@ -119,7 +119,7 @@ int main( int argc, char *argv[] )
   //  Software Guide : EndLatex
 
   // Software Guide : BeginCodeSnippet
-  cellularAggregate->AddSubstrate( reader->GetOutput() );
+  cellularAggregate->AddSubstrate(reader->GetOutput());
   // Software Guide : EndCodeSnippet
 
   //  Software Guide : BeginLatex
@@ -137,16 +137,16 @@ int main( int argc, char *argv[] )
   //
   //  Software Guide : EndLatex
 
-  ImageType::IndexType  index;
+  ImageType::IndexType index;
 
-  index[0] = atoi( argv[2] );
-  index[1] = atoi( argv[3] );
+  index[0] = atoi(argv[2]);
+  index[1] = atoi(argv[3]);
 
-  CellType::PointType  position;
+  CellType::PointType position;
 
-  reader->GetOutput()->TransformIndexToPhysicalPoint( index, position );
+  reader->GetOutput()->TransformIndexToPhysicalPoint(index, position);
 
-  std::cout << "Egg position index = " <<  index   << std::endl;
+  std::cout << "Egg position index = " << index << std::endl;
   std::cout << "Egg position point = " << position << std::endl;
 
   //  Software Guide : BeginLatex
@@ -186,8 +186,8 @@ int main( int argc, char *argv[] )
   //  Software Guide : EndLatex
 
   // Software Guide : BeginCodeSnippet
-  CellType::SetChemoAttractantLowThreshold(  atof( argv[4] ) );
-  CellType::SetChemoAttractantHighThreshold( atof( argv[5] ) );
+  CellType::SetChemoAttractantLowThreshold(atof(argv[4]));
+  CellType::SetChemoAttractantHighThreshold(atof(argv[5]));
   // Software Guide : EndCodeSnippet
 
 
@@ -201,7 +201,7 @@ int main( int argc, char *argv[] )
   //  Software Guide : EndLatex
 
   // Software Guide : BeginCodeSnippet
-  cellularAggregate->SetEgg( egg, position );
+  cellularAggregate->SetEgg(egg, position);
   // Software Guide : EndCodeSnippet
 
 
@@ -219,14 +219,14 @@ int main( int argc, char *argv[] )
   //  Software Guide : EndLatex
 
   // Software Guide : BeginCodeSnippet
-  unsigned int numberOfIterations = atoi( argv[6] );
+  unsigned int numberOfIterations = atoi(argv[6]);
 
   std::cout << "numberOfIterations " << numberOfIterations << std::endl;
 
-  for(unsigned int i=0; i<numberOfIterations; i++)
-    {
+  for (unsigned int i = 0; i < numberOfIterations; i++)
+  {
     cellularAggregate->AdvanceTimeStep();
-    }
+  }
   // Software Guide : EndCodeSnippet
 
 
@@ -235,25 +235,24 @@ int main( int argc, char *argv[] )
 
   //  Write the mesh to a file
   //
-  using WriterType = itk::VTKPolyDataWriter< CellularAggregateType::MeshType >;
+  using WriterType = itk::VTKPolyDataWriter<CellularAggregateType::MeshType>;
 
   WriterType::Pointer writer = WriterType::New();
 
-  writer->SetInput( cellularAggregate->GetMesh() );
-  writer->SetFileName( argv[7] );
+  writer->SetInput(cellularAggregate->GetMesh());
+  writer->SetFileName(argv[7]);
 
   try
-    {
+  {
     writer->Update();
-    }
-  catch( itk::ExceptionObject & excep )
-    {
+  }
+  catch (itk::ExceptionObject & excep)
+  {
     std::cerr << "Exception caught !" << std::endl;
     std::cerr << excep << std::endl;
     return EXIT_FAILURE;
-    }
+  }
 
 
   return EXIT_SUCCESS;
-
-  }
+}

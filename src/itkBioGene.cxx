@@ -24,8 +24,7 @@ namespace bio
 /**
  *    Constructor
  */
-Gene
-::Gene()
+Gene ::Gene()
 {
   m_Name = "Unknown";
 }
@@ -33,43 +32,37 @@ Gene
 /**
  *    Destructor
  */
-Gene
-::~Gene()
-{}
+Gene ::~Gene() {}
 
 /**
  *    Copy from another genome
  */
 void
-Gene
-::Copy(const Gene & gene)
+Gene ::Copy(const Gene & gene)
 {
   m_Name = gene.m_Name;
 
   m_ControlDomains.clear();
 
-  m_ControlDomains.insert( m_ControlDomains.begin(),
-                           gene.m_ControlDomains.begin(),
-                           gene.m_ControlDomains.end() );
+  m_ControlDomains.insert(m_ControlDomains.begin(), gene.m_ControlDomains.begin(), gene.m_ControlDomains.end());
 
   m_ProteinDomains.clear();
 
   auto proteinDomain = gene.m_ProteinDomains.begin();
-  auto last          = gene.m_ProteinDomains.end();
+  auto last = gene.m_ProteinDomains.end();
 
-  while ( proteinDomain != last )
-    {
-    m_ProteinDomains[( *proteinDomain ).first] = ( *proteinDomain ).second;
+  while (proteinDomain != last)
+  {
+    m_ProteinDomains[(*proteinDomain).first] = (*proteinDomain).second;
     ++proteinDomain;
-    }
+  }
 }
 
 /**
  *    Set the name of the gene
  */
 void
-Gene
-::SetName(const NameType & name)
+Gene ::SetName(const NameType & name)
 {
   m_Name = name;
 }
@@ -78,8 +71,7 @@ Gene
  *    Set the name of the gene
  */
 void
-Gene
-::SetName(const char *name)
+Gene ::SetName(const char * name)
 {
   m_Name = name;
 }
@@ -88,8 +80,7 @@ Gene
  *    Get the name of the gene
  */
 const char *
-Gene
-::GetName() const
+Gene ::GetName() const
 {
   return m_Name.c_str();
 }
@@ -98,8 +89,7 @@ Gene
  *    Add a protein domain
  */
 void
-Gene
-::AddProteinDomain(const DomainType & domain, AffinityType affinity)
+Gene ::AddProteinDomain(const DomainType & domain, AffinityType affinity)
 {
   m_ProteinDomains[domain] = affinity;
 }
@@ -108,14 +98,13 @@ Gene
  *    Add a protein domain
  */
 void
-Gene
-::AddGeneControlDomain(const DomainType & domain, bool type)
+Gene ::AddGeneControlDomain(const DomainType & domain, bool type)
 {
   ControlDomainType controlDomain;
 
   controlDomain.m_Domain = domain;
-  controlDomain.m_Type   = type;
+  controlDomain.m_Type = type;
   m_ControlDomains.push_back(controlDomain);
 }
-}  // end namespace bio
-}  // end namespace itk
+} // end namespace bio
+} // end namespace itk

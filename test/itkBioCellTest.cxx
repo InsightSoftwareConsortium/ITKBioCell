@@ -28,33 +28,33 @@
  *
  */
 
-template< unsigned int NSpaceDimension >
-class BioCellHelper : public itk::bio::Cell< NSpaceDimension >
+template <unsigned int NSpaceDimension>
+class BioCellHelper : public itk::bio::Cell<NSpaceDimension>
 {
 
 public:
-
   using Self = BioCellHelper;
   using Superclass = itk::bio::Cell<NSpaceDimension>;
   using Pointer = itk::SmartPointer<Self>;
   using ConstPointer = itk::SmartPointer<const Self>;
 
-  using VectorType = typename itk::bio::Cell< NSpaceDimension >::VectorType;
+  using VectorType = typename itk::bio::Cell<NSpaceDimension>::VectorType;
 
 
-  static int Exercise(VectorType forceVector,
-    double itkNotUsed(radius),
-    double defaultRadius,
-    double growthRadiusIncrement,
-    double growthRadiusLimit,
-    double nutrientSelfRepairLevel,
-    double energySelfRepairLevel,
-    itk::SizeValueType growthMaximumLatencyTime,
-    itk::SizeValueType divisionMaximumLatencyTime,
-    itk::SizeValueType maximumGenerationLimit,
-    double chemoAttractantLowThreshold,
-    double chemoAttractantHighThreshold,
-    double itkNotUsed(chemoAttractantLevel))
+  static int
+  Exercise(VectorType         forceVector,
+           double             itkNotUsed(radius),
+           double             defaultRadius,
+           double             growthRadiusIncrement,
+           double             growthRadiusLimit,
+           double             nutrientSelfRepairLevel,
+           double             energySelfRepairLevel,
+           itk::SizeValueType growthMaximumLatencyTime,
+           itk::SizeValueType divisionMaximumLatencyTime,
+           itk::SizeValueType maximumGenerationLimit,
+           double             chemoAttractantLowThreshold,
+           double             chemoAttractantHighThreshold,
+           double             itkNotUsed(chemoAttractantLevel))
   {
     std::cout << "Testing " << NSpaceDimension << "D..." << std::endl;
 
@@ -64,48 +64,46 @@ public:
     CellType * egg = CellType::CreateEgg();
 
     // Test Set/Get methods
-    //CellType::SetRadius( radius );
-    //TEST_SET_GET_VALUE(radius, egg->GetRadius());
+    // CellType::SetRadius( radius );
+    // TEST_SET_GET_VALUE(radius, egg->GetRadius());
     egg->GetRadius();
 
-    CellType::SetDefaultRadius( defaultRadius );
-    //TEST_SET_GET_VALUE(defaultRadius, egg->GetDefaultRadius());
+    CellType::SetDefaultRadius(defaultRadius);
+    // TEST_SET_GET_VALUE(defaultRadius, egg->GetDefaultRadius());
 
-    CellType::SetGrowthRadiusIncrement( growthRadiusIncrement );
-    //TEST_SET_GET_VALUE(growthRadiusIncrement, egg->GetGrowthRadiusIncrement());
+    CellType::SetGrowthRadiusIncrement(growthRadiusIncrement);
+    // TEST_SET_GET_VALUE(growthRadiusIncrement, egg->GetGrowthRadiusIncrement());
 
-    CellType::SetGrowthRadiusLimit( growthRadiusLimit );
+    CellType::SetGrowthRadiusLimit(growthRadiusLimit);
     TEST_SET_GET_VALUE(growthRadiusLimit, egg->GetGrowthRadiusLimit());
 
-    CellType::SetNutrientSelfRepairLevel( nutrientSelfRepairLevel );
+    CellType::SetNutrientSelfRepairLevel(nutrientSelfRepairLevel);
     /*TEST_SET_GET_VALUE(nutrientSelfRepairLevel,
       egg->GetNutrientSelfRepairLevel());*/
 
-    CellType::SetEnergySelfRepairLevel( energySelfRepairLevel );
-    //TEST_SET_GET_VALUE(energySelfRepairLevel, egg->GetEnergySelfRepairLevel());
+    CellType::SetEnergySelfRepairLevel(energySelfRepairLevel);
+    // TEST_SET_GET_VALUE(energySelfRepairLevel, egg->GetEnergySelfRepairLevel());
 
-    CellType::SetGrowthMaximumLatencyTime( growthMaximumLatencyTime );
-    TEST_SET_GET_VALUE(growthMaximumLatencyTime,
-      egg->GetGrowthMaximumLatencyTime());
+    CellType::SetGrowthMaximumLatencyTime(growthMaximumLatencyTime);
+    TEST_SET_GET_VALUE(growthMaximumLatencyTime, egg->GetGrowthMaximumLatencyTime());
 
-    CellType::SetDivisionMaximumLatencyTime( divisionMaximumLatencyTime );
-    TEST_SET_GET_VALUE(divisionMaximumLatencyTime,
-      egg->GetDivisionMaximumLatencyTime());
+    CellType::SetDivisionMaximumLatencyTime(divisionMaximumLatencyTime);
+    TEST_SET_GET_VALUE(divisionMaximumLatencyTime, egg->GetDivisionMaximumLatencyTime());
 
-    CellType::SetMaximumGenerationLimit( maximumGenerationLimit );
+    CellType::SetMaximumGenerationLimit(maximumGenerationLimit);
     /*TEST_SET_GET_VALUE(maximumGenerationLimit,
       egg->GetMaximumGenerationLimit());*/
 
-    CellType::SetChemoAttractantLowThreshold( chemoAttractantLowThreshold );
+    CellType::SetChemoAttractantLowThreshold(chemoAttractantLowThreshold);
     /*TEST_SET_GET_VALUE(chemoAttractantLowThreshold,
       egg->GetChemoAttractantLowThreshold());*/
 
-    CellType::SetChemoAttractantHighThreshold( chemoAttractantHighThreshold );
+    CellType::SetChemoAttractantHighThreshold(chemoAttractantHighThreshold);
     /*TEST_SET_GET_VALUE(chemoAttractantHighThreshold,
       egg->GetChemoAttractantHighThreshold());*/
 
-    //CellType::SetChemoAttractantLevel( chemoAttractantLevel );
-    //TEST_SET_GET_VALUE(chemoAttractantLevel, egg->GetChemoAttractantLevel());
+    // CellType::SetChemoAttractantLevel( chemoAttractantLevel );
+    // TEST_SET_GET_VALUE(chemoAttractantLevel, egg->GetChemoAttractantLevel());
 
     egg->ClearForce();
     egg->AddForce(forceVector);
@@ -119,8 +117,7 @@ public:
     egg->GetColor();
 
     // Create a cellular aggregate base
-    itk::bio::CellularAggregateBase::Pointer cell =
-      itk::bio::CellularAggregateBase::New();
+    itk::bio::CellularAggregateBase::Pointer cell = itk::bio::CellularAggregateBase::New();
     cell->Clone();
 
     egg->SetCellularAggregate(cell);
@@ -128,53 +125,50 @@ public:
     TEST_SET_GET_VALUE(cell, egg->GetCellularAggregate());
 
     // Complete the cell life cycle
-    //while(egg->CheckPointApoptosis())
+    // while(egg->CheckPointApoptosis())
     egg->AdvanceTimeStep();
 
     delete egg;
 
     std::cout << "Test succeeded." << std::endl;
     return EXIT_SUCCESS;
-
   }
-
 };
 
 
-int itkBioCellTest( int argc, char * argv[] )
+int
+itkBioCellTest(int argc, char * argv[])
 {
 
-  if ( argc < 13 )
-    {
-    std::cout << "Usage: " << argv[0]
-      << " Radius"
-      << " DefaultRadius"
-      << " GrowthRadiusIncrement"
-      << " GrowthRadiusLimit"
-      << " NutrientSelfRepairLevel"
-      << " EnergySelfRepairLevel"
-      << " GrowthMaximumLatencyTime"
-      << " DivisionMaximumLatencyTime"
-      << " MaximumGenerationLimit"
-      << " ChemoAttractantLowThreshold"
-      << " ChemoAttractantHighThreshold"
-      << " ChemoAttractantLevel"
-      << std::endl;
+  if (argc < 13)
+  {
+    std::cout << "Usage: " << argv[0] << " Radius"
+              << " DefaultRadius"
+              << " GrowthRadiusIncrement"
+              << " GrowthRadiusLimit"
+              << " NutrientSelfRepairLevel"
+              << " EnergySelfRepairLevel"
+              << " GrowthMaximumLatencyTime"
+              << " DivisionMaximumLatencyTime"
+              << " MaximumGenerationLimit"
+              << " ChemoAttractantLowThreshold"
+              << " ChemoAttractantHighThreshold"
+              << " ChemoAttractantLevel" << std::endl;
     return EXIT_FAILURE;
-    }
+  }
 
-  double radius = atof(argv[1]);
-  double defaultRadius = atof(argv[2]);
-  double growthRadiusIncrement = atof(argv[3]);
-  double growthRadiusLimit = atof(argv[4]);
-  double nutrientSelfRepairLevel = atof(argv[5]);
-  double energySelfRepairLevel = atof(argv[6]);
+  double             radius = atof(argv[1]);
+  double             defaultRadius = atof(argv[2]);
+  double             growthRadiusIncrement = atof(argv[3]);
+  double             growthRadiusLimit = atof(argv[4]);
+  double             nutrientSelfRepairLevel = atof(argv[5]);
+  double             energySelfRepairLevel = atof(argv[6]);
   itk::SizeValueType growthMaximumLatencyTime = atoi(argv[7]);
   itk::SizeValueType divisionMaximumLatencyTime = atoi(argv[8]);
   itk::SizeValueType maximumGenerationLimit = atoi(argv[9]);
-  double chemoAttractantLowThreshold = atof(argv[10]);
-  double chemoAttractantHighThreshold = atof(argv[11]);
-  double chemoAttractantLevel = atof(argv[12]);
+  double             chemoAttractantLowThreshold = atof(argv[10]);
+  double             chemoAttractantHighThreshold = atof(argv[11]);
+  double             chemoAttractantLevel = atof(argv[12]);
 
   constexpr unsigned int dimension2D = 2;
   constexpr unsigned int dimension3D = 3;
@@ -186,18 +180,18 @@ int itkBioCellTest( int argc, char * argv[] )
   forceVector2D[1] = 20.5;
 
   BioCellHelper<dimension2D>::Exercise(forceVector2D,
-    radius,
-    defaultRadius,
-    growthRadiusIncrement,
-    growthRadiusLimit,
-    nutrientSelfRepairLevel,
-    energySelfRepairLevel,
-    growthMaximumLatencyTime,
-    divisionMaximumLatencyTime,
-    maximumGenerationLimit,
-    chemoAttractantLowThreshold,
-    chemoAttractantHighThreshold,
-    chemoAttractantLevel);
+                                       radius,
+                                       defaultRadius,
+                                       growthRadiusIncrement,
+                                       growthRadiusLimit,
+                                       nutrientSelfRepairLevel,
+                                       energySelfRepairLevel,
+                                       growthMaximumLatencyTime,
+                                       divisionMaximumLatencyTime,
+                                       maximumGenerationLimit,
+                                       chemoAttractantLowThreshold,
+                                       chemoAttractantHighThreshold,
+                                       chemoAttractantLevel);
 
   // Test for 3D
   BioCellHelper<dimension3D>::VectorType forceVector3D;
@@ -206,18 +200,18 @@ int itkBioCellTest( int argc, char * argv[] )
   forceVector3D[2] = 30.5;
 
   BioCellHelper<dimension3D>::Exercise(forceVector3D,
-    radius,
-    defaultRadius,
-    growthRadiusIncrement,
-    growthRadiusLimit,
-    nutrientSelfRepairLevel,
-    energySelfRepairLevel,
-    growthMaximumLatencyTime,
-    divisionMaximumLatencyTime,
-    maximumGenerationLimit,
-    chemoAttractantLowThreshold,
-    chemoAttractantHighThreshold,
-    chemoAttractantLevel);
+                                       radius,
+                                       defaultRadius,
+                                       growthRadiusIncrement,
+                                       growthRadiusLimit,
+                                       nutrientSelfRepairLevel,
+                                       energySelfRepairLevel,
+                                       growthMaximumLatencyTime,
+                                       divisionMaximumLatencyTime,
+                                       maximumGenerationLimit,
+                                       chemoAttractantLowThreshold,
+                                       chemoAttractantHighThreshold,
+                                       chemoAttractantLevel);
 
   // Test for 4D
   BioCellHelper<dimension4D>::VectorType forceVector4D;
@@ -227,18 +221,18 @@ int itkBioCellTest( int argc, char * argv[] )
   forceVector4D[3] = 15.5;
 
   BioCellHelper<dimension4D>::Exercise(forceVector4D,
-    radius,
-    defaultRadius,
-    growthRadiusIncrement,
-    growthRadiusLimit,
-    nutrientSelfRepairLevel,
-    energySelfRepairLevel,
-    growthMaximumLatencyTime,
-    divisionMaximumLatencyTime,
-    maximumGenerationLimit,
-    chemoAttractantLowThreshold,
-    chemoAttractantHighThreshold,
-    chemoAttractantLevel);
+                                       radius,
+                                       defaultRadius,
+                                       growthRadiusIncrement,
+                                       growthRadiusLimit,
+                                       nutrientSelfRepairLevel,
+                                       energySelfRepairLevel,
+                                       growthMaximumLatencyTime,
+                                       divisionMaximumLatencyTime,
+                                       maximumGenerationLimit,
+                                       chemoAttractantLowThreshold,
+                                       chemoAttractantHighThreshold,
+                                       chemoAttractantLevel);
 
   return EXIT_SUCCESS;
 }

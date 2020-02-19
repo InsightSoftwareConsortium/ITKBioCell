@@ -37,18 +37,22 @@ namespace bio
 class BioCell_EXPORT CellBase
 {
 public:
-  using ColorType = itk::RGBPixel< float >;
+  using ColorType = itk::RGBPixel<float>;
   using IdentifierType = itk::IdentifierType;
   using GenomeType = itk::bio::Genome;
   using GeneIdType = GenomeType::GeneIdType;
 
-  virtual ColorType GetColor() const;
+  virtual ColorType
+  GetColor() const;
 
-  double GetRadius() const;
+  double
+  GetRadius() const;
 
-  IdentifierType GetSelfIdentifier() const;
+  IdentifierType
+  GetSelfIdentifier() const;
 
-  IdentifierType GetParentIdentifier() const;
+  IdentifierType
+  GetParentIdentifier() const;
 
   enum CellCycleState
   {
@@ -64,40 +68,52 @@ protected:
   CellBase();
   virtual ~CellBase();
 
-  virtual void Grow();
+  virtual void
+  Grow();
 
-  virtual void DNAReplication();
+  virtual void
+  DNAReplication();
 
-  virtual void Apoptosis();
+  virtual void
+  Apoptosis();
 
-  virtual void EnergyIntake();
+  virtual void
+  EnergyIntake();
 
-  virtual void NutrientsIntake();
+  virtual void
+  NutrientsIntake();
 
-  virtual void ComputeGeneNetwork();
+  virtual void
+  ComputeGeneNetwork();
 
-  virtual void SecreteProducts();
+  virtual void
+  SecreteProducts();
 
-  virtual bool CheckPointGrowth();
+  virtual bool
+  CheckPointGrowth();
 
-  virtual bool CheckPointDNAReplication();
+  virtual bool
+  CheckPointDNAReplication();
 
-  virtual bool CheckPointMitosis();
+  virtual bool
+  CheckPointMitosis();
 
-  virtual bool CheckPointApoptosis();
+  virtual bool
+  CheckPointApoptosis();
 
-  void MarkForRemoval();
+  void
+  MarkForRemoval();
 
   // Static Members
   static ColorType DefaultColor;
 
-  static GeneIdType BlueGene;        // Pigment genes
+  static GeneIdType BlueGene; // Pigment genes
   static GeneIdType RedGene;
   static GeneIdType GreenGene;
-  static GeneIdType Cdk2E;           // cell cycle control  genes
-  static GeneIdType Caspase;         // cleavage enzyme: apoptosis effector
-  static GeneIdType Pressurin;       // signal from micro-tubules subject to
-                                     // stress
+  static GeneIdType Cdk2E;     // cell cycle control  genes
+  static GeneIdType Caspase;   // cleavage enzyme: apoptosis effector
+  static GeneIdType Pressurin; // signal from micro-tubules subject to
+                               // stress
 
   static SizeValueType MaximumGenerationLimit;
   static SizeValueType GrowthMaximumLatencyTime;
@@ -118,48 +134,62 @@ protected:
   static double ChemoAttractantLowThreshold;
   static double ChemoAttractantHighThreshold;
 
-  GenomeType *m_Genome;
-  GenomeType *m_GenomeCopy;
+  GenomeType * m_Genome;
+  GenomeType * m_GenomeCopy;
 
   static double DefaultRadius;
   static double GrowthRadiusLimit;
   static double GrowthRadiusIncrement;
 
 public:
+  virtual bool
+  MarkedForRemoval() const;
 
-  virtual bool MarkedForRemoval() const;
+  static void
+  SetDefaultRadius(double);
 
-  static void SetDefaultRadius(double);
+  static void
+  SetGrowthRadiusLimit(double);
 
-  static void SetGrowthRadiusLimit(double);
+  static void
+  SetGrowthRadiusIncrement(double);
 
-  static void SetGrowthRadiusIncrement(double);
+  static void
+  SetEnergySelfRepairLevel(double);
 
-  static void SetEnergySelfRepairLevel(double);
+  static void
+  SetNutrientSelfRepairLevel(double);
 
-  static void SetNutrientSelfRepairLevel(double);
+  static void
+  SetDefaultColor(const ColorType & color);
 
-  static void SetDefaultColor(const ColorType & color);
+  static void
+  SetChemoAttractantHighThreshold(double);
 
-  static void SetChemoAttractantHighThreshold(double);
+  static void
+  SetChemoAttractantLowThreshold(double);
 
-  static void SetChemoAttractantLowThreshold(double);
+  static void
+  SetGrowthMaximumLatencyTime(SizeValueType latency);
 
-  static void SetGrowthMaximumLatencyTime(SizeValueType latency);
+  static SizeValueType
+  GetGrowthMaximumLatencyTime();
 
-  static SizeValueType GetGrowthMaximumLatencyTime();
-
-  static double GetGrowthRadiusLimit();
+  static double
+  GetGrowthRadiusLimit();
 
   static void SetMaximumGenerationLimit(SizeValueType);
 
   static void SetDivisionMaximumLatencyTime(SizeValueType);
 
-  static SizeValueType GetDivisionMaximumLatencyTime();
+  static SizeValueType
+  GetDivisionMaximumLatencyTime();
 
-  static void ResetCounter();
+  static void
+  ResetCounter();
 
-  static void Initialize(); // define values in static variables.
+  static void
+  Initialize(); // define values in static variables.
 
 protected:
   double m_Pressure;

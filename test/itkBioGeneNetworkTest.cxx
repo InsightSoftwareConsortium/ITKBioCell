@@ -21,11 +21,12 @@
 #include "itkBioGeneNetwork.h"
 
 
-int itkBioGeneNetworkTest( int, char * [] )
+int
+itkBioGeneNetworkTest(int, char *[])
 {
-   itk::bio::GeneNetwork net;
+  itk::bio::GeneNetwork net;
 
 
-   std::cout << "Test Passed !" << std::endl;
-   return EXIT_SUCCESS;
+  std::cout << "Test Passed !" << std::endl;
+  return EXIT_SUCCESS;
 }

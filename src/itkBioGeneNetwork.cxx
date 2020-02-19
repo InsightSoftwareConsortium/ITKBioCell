@@ -24,35 +24,27 @@ namespace bio
 /**
  *    Constructor
  */
-GeneNetwork
-::GeneNetwork()
-{}
+GeneNetwork ::GeneNetwork() {}
 
 /**
  *    Destructor
  */
-GeneNetwork
-::~GeneNetwork()
-{}
+GeneNetwork ::~GeneNetwork() {}
 
 /**
  *    Copy from another genome
  */
 void
-GeneNetwork
-::Copy(const GeneNetwork & geneNetwork)
+GeneNetwork ::Copy(const GeneNetwork & geneNetwork)
 {
   m_ProteinConcentration.clear();
-  m_ProteinConcentration.insert(
-    m_ProteinConcentration.begin(),
-    geneNetwork.m_ProteinConcentration.begin(),
-    geneNetwork.m_ProteinConcentration.end() );
+  m_ProteinConcentration.insert(m_ProteinConcentration.begin(),
+                                geneNetwork.m_ProteinConcentration.begin(),
+                                geneNetwork.m_ProteinConcentration.end());
 
   m_DomainConcentration.clear();
   m_DomainConcentration.insert(
-    m_DomainConcentration.begin(),
-    geneNetwork.m_DomainConcentration.begin(),
-    geneNetwork.m_DomainConcentration.end() );
+    m_DomainConcentration.begin(), geneNetwork.m_DomainConcentration.begin(), geneNetwork.m_DomainConcentration.end());
 }
-}  // end namespace bio
-}  // end namespace itk
+} // end namespace bio
+} // end namespace itk

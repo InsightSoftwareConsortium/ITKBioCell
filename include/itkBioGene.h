@@ -46,39 +46,46 @@ public:
   using NameType = std::string;
   using DomainType = std::string;
   using AffinityType = double;
-  using ProteinDomainsType = std::map< DomainType, AffinityType >;
+  using ProteinDomainsType = std::map<DomainType, AffinityType>;
 
-  using ControlDomainType = struct {
+  using ControlDomainType = struct
+  {
     DomainType m_Domain;
-    bool m_Type;
+    bool       m_Type;
   };
 
-  using GeneControlDomainsType = std::vector< ControlDomainType >;
+  using GeneControlDomainsType = std::vector<ControlDomainType>;
 
 public:
   Gene();
   virtual ~Gene();
 
-  void Copy(const Gene & genome);
+  void
+  Copy(const Gene & genome);
 
   /** Set/Get the name of the gene. This uses a std::string type. */
-  void SetName(const NameType & name);
+  void
+  SetName(const NameType & name);
 
-  void SetName(const char *name);
+  void
+  SetName(const char * name);
 
-  const char * GetName() const;
+  const char *
+  GetName() const;
 
   /** Add a protein domain along with an affinity. The name of the domain
       here actually refers to the one for which this protein will have
       binding affinity.  For example, adding "SH2" with affinity 0.05 will
       mean that this gene will synthetize a proteing with a domain that has
       0.05 affinity for a standard SH2 domain. */
-  void AddProteinDomain(const DomainType & domain, AffinityType affinity);
+  void
+  AddProteinDomain(const DomainType & domain, AffinityType affinity);
 
   /** Add a control domain to the gene. A control domain is an enhancer or silencer.
       A gene can have any number of them. The type will indicate if they are enhancers
       or silencers. */
-  void AddGeneControlDomain(const DomainType & domain, bool type);
+  void
+  AddGeneControlDomain(const DomainType & domain, bool type);
 
 private:
   NameType               m_Name;

@@ -35,48 +35,63 @@ namespace bio
  * \ingroup ITKBioCell
  */
 
-template< unsigned int NSpaceDimension = 3 >
-class ITK_TEMPLATE_EXPORT Cell:public CellBase
+template <unsigned int NSpaceDimension = 3>
+class ITK_TEMPLATE_EXPORT Cell : public CellBase
 {
 public:
   using Superclass = CellBase;
 
-  using VectorType = itk::Vector< double, NSpaceDimension >;
-  using PointType = itk::Point< double, NSpaceDimension >;
+  using VectorType = itk::Vector<double, NSpaceDimension>;
+  using PointType = itk::Point<double, NSpaceDimension>;
 
   friend class CellularAggregateBase; // need to give access to the constructor.
 
 public:
   ~Cell() override;
-  virtual void ClearForce();
+  virtual void
+  ClearForce();
 
-  virtual void AddForce(const VectorType & force);
+  virtual void
+  AddForce(const VectorType & force);
 
-  virtual void AdvanceTimeStep();
+  virtual void
+  AdvanceTimeStep();
 
-  virtual void Mitosis();
+  virtual void
+  Mitosis();
 
-  void Apoptosis(void) override;
+  void
+  Apoptosis(void) override;
 
-  virtual void ReceptorsReading();
+  virtual void
+  ReceptorsReading();
 
-  virtual void SetCellularAggregate(CellularAggregateBase *);
+  virtual void
+  SetCellularAggregate(CellularAggregateBase *);
 
-  virtual CellularAggregateBase * GetCellularAggregate();
+  virtual CellularAggregateBase *
+  GetCellularAggregate();
 
-  virtual const CellularAggregateBase * GetCellularAggregate() const;
+  virtual const CellularAggregateBase *
+  GetCellularAggregate() const;
 
-  static const char * GetSpeciesName(void)
+  static const char *
+  GetSpeciesName(void)
   {
     return "Primitive Cell";
   }
 
-  bool CheckPointApoptosis() override
-    { return CellBase::CheckPointApoptosis(); }
+  bool
+  CheckPointApoptosis() override
+  {
+    return CellBase::CheckPointApoptosis();
+  }
 
-  static Cell * CreateEgg();
+  static Cell *
+  CreateEgg();
 
-  static unsigned int GetDimension()
+  static unsigned int
+  GetDimension()
   {
     return NSpaceDimension;
   }
@@ -85,19 +100,19 @@ protected:
   Cell(); // Users should create a cell with the CreateEgg() method
 
 public:
-
-  virtual const VectorType & GetForce() const;
+  virtual const VectorType &
+  GetForce() const;
 
 protected:
   VectorType m_Force;
 
-  CellularAggregateBase *m_Aggregate;
+  CellularAggregateBase * m_Aggregate;
 };
 } // end namespace bio
 } // end namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkBioCell.hxx"
+#  include "itkBioCell.hxx"
 #endif
 
 #endif
