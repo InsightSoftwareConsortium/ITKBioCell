@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  *  limitations under the License.
  *
  *=========================================================================*/
+
 #ifndef itkBioCellularAggregate_h
 #define itkBioCellularAggregate_h
 
@@ -39,8 +40,8 @@ namespace bio
  *
  * \ingroup ITKBioCell
  */
-template< unsigned int NSpaceDimension = 3 >
-class ITK_TEMPLATE_EXPORT CellularAggregate:public CellularAggregateBase
+template <unsigned int NSpaceDimension = 3>
+class ITK_TEMPLATE_EXPORT CellularAggregate : public CellularAggregateBase
 {
 public:
   ITK_DISALLOW_COPY_AND_ASSIGN(CellularAggregate);
@@ -48,8 +49,8 @@ public:
   /** Standard class type alias. */
   using Self = CellularAggregate;
   using Superclass = CellularAggregateBase;
-  using Pointer = SmartPointer< Self >;
-  using ConstPointer = SmartPointer< const Self >;
+  using Pointer = SmartPointer<Self>;
+  using ConstPointer = SmartPointer<const Self>;
 
   /*** Run-time type information (and related methods). */
   itkTypeMacro(BioCellularAggregate, CellularAggregateBase);
@@ -60,24 +61,21 @@ public:
   static constexpr unsigned int SpaceDimension = NSpaceDimension;
 
   /*** Type to be used for data associated with each point in the mesh. */
-  using BioCellType = Cell< NSpaceDimension >;
+  using BioCellType = Cell<NSpaceDimension>;
   using PointPixelType = BioCellType *;
   using CellPixelType = double;
 
   /** Mesh Traits */
-  using MeshTraits = DefaultDynamicMeshTraits<
-    PointPixelType,                     // PixelType
-    NSpaceDimension,                    // Points Dimension
-    NSpaceDimension,                    // Max.Topological Dimension
-    double,                             // Type for coordinates
-    double,                             // Type for interpolation
-    CellPixelType                       // Type for values in the cells
-    >;
+  using MeshTraits = DefaultDynamicMeshTraits<PointPixelType,  // PixelType
+                                              NSpaceDimension, // Points Dimension
+                                              NSpaceDimension, // Max.Topological Dimension
+                                              double,          // Type for coordinates
+                                              double,          // Type for interpolation
+                                              CellPixelType    // Type for values in the cells
+                                              >;
 
   /** Mesh Traits */
-  using MeshType = Mesh<  PointPixelType,
-                 NSpaceDimension,
-                 MeshTraits  >;
+  using MeshType = Mesh<PointPixelType, NSpaceDimension, MeshTraits>;
 
   /** Mesh Associated types */
   using MeshPointer = typename MeshType::Pointer;
@@ -97,72 +95,92 @@ public:
   using CellAutoPointer = typename MeshType::CellAutoPointer;
 
   /**   Voronoi region around a bio::Cell */
-  using CellInterfaceType = CellInterface<
-    typename MeshType::CellPixelType,
-    typename MeshType::CellTraits >;
+  using CellInterfaceType = CellInterface<typename MeshType::CellPixelType, typename MeshType::CellTraits>;
 
-  using VoronoiRegionType = PolygonCell<  CellInterfaceType >;
+  using VoronoiRegionType = PolygonCell<CellInterfaceType>;
   using VoronoiRegionAutoPointer = typename VoronoiRegionType::SelfAutoPointer;
 
   /** Convenient type alias. */
   using ImagePixelType = float;
-  using SubstrateType = Image< ImagePixelType, NSpaceDimension >;
+  using SubstrateType = Image<ImagePixelType, NSpaceDimension>;
   using SubstratePointer = typename SubstrateType::Pointer;
   using SubstrateValueType = ImagePixelType;
-  using SubstratesVector = std::vector< SubstratePointer >;
+  using SubstratesVector = std::vector<SubstratePointer>;
 
 public:
-  unsigned int GetNumberOfCells() const;
+  unsigned int
+  GetNumberOfCells() const;
 
-  static unsigned int GetDimension() { return SpaceDimension; }
+  static unsigned int
+  GetDimension()
+  {
+    return SpaceDimension;
+  }
 
-  void SetGrowthRadiusLimit(double value);
+  void
+  SetGrowthRadiusLimit(double value);
 
-  void SetGrowthRadiusIncrement(double value);
+  void
+  SetGrowthRadiusIncrement(double value);
 
   itkGetModifiableObjectMacro(Mesh, MeshType);
 
-  virtual void AdvanceTimeStep();
+  virtual void
+  AdvanceTimeStep();
 
-  virtual void SetEgg(BioCellType *cell, const PointType & position);
+  virtual void
+  SetEgg(BioCellType * cell, const PointType & position);
 
-  virtual void Add(CellBase *cell);
+  virtual void
+  Add(CellBase * cell);
 
-  virtual void Add(CellBase *cell, const VectorType & perturbation);
+  virtual void
+  Add(CellBase * cell, const VectorType & perturbation);
 
-  void Add(CellBase *cellA, CellBase *cellB, double perturbationLength) override;
+  void
+  Add(CellBase * cellA, CellBase * cellB, double perturbationLength) override;
 
-  void Remove(CellBase *cell) override;
+  void
+  Remove(CellBase * cell) override;
 
-  virtual void GetVoronoi(IdentifierType cellId, VoronoiRegionAutoPointer &) const;
+  virtual void
+  GetVoronoi(IdentifierType cellId, VoronoiRegionAutoPointer &) const;
 
-  void DumpContent(std::ostream & os) const;
+  void
+  DumpContent(std::ostream & os) const;
 
-  virtual void AddSubstrate(SubstrateType *substrate);
+  virtual void
+  AddSubstrate(SubstrateType * substrate);
 
-  virtual SubstratesVector & GetSubstrates();
+  virtual SubstratesVector &
+  GetSubstrates();
 
-  SubstrateValueType GetSubstrateValue(IdentifierType cellId,
-                                               unsigned int substrateId) const override;
+  SubstrateValueType
+  GetSubstrateValue(IdentifierType cellId, unsigned int substrateId) const override;
 
-  virtual void KillAll();
+  virtual void
+  KillAll();
 
 protected:
   CellularAggregate();
   ~CellularAggregate() override;
 
-  void PrintSelf(std::ostream & os, Indent indent) const override;
+  void
+  PrintSelf(std::ostream & os, Indent indent) const override;
 
-  virtual void ComputeForces();
+  virtual void
+  ComputeForces();
 
-  virtual void UpdatePositions();
+  virtual void
+  UpdatePositions();
 
-  virtual void ComputeClosestPoints();
+  virtual void
+  ComputeClosestPoints();
 
-  virtual void ClearForces();
+  virtual void
+  ClearForces();
 
 private:
-
   MeshPointer      m_Mesh;
   SubstratesVector m_Substrates;
   double           m_FrictionForce;
@@ -173,7 +191,7 @@ private:
 } // end namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkBioCellularAggregate.hxx"
+#  include "itkBioCellularAggregate.hxx"
 #endif
 
 #endif

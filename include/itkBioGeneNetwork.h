@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  *  limitations under the License.
  *
  *=========================================================================*/
+
 #ifndef itkBioGeneNetwork_h
 #define itkBioGeneNetwork_h
 
@@ -39,17 +40,17 @@ namespace bio
 class BioCell_EXPORT GeneNetwork
 {
 public:
-  using ProteomeType = std::vector< float >;
-  using DomainsType = std::vector< float >;
+  using ProteomeType = std::vector<float>;
+  using DomainsType = std::vector<float>;
 
 public:
   GeneNetwork();
   virtual ~GeneNetwork();
 
-  void Copy(const GeneNetwork & genome);
+  void
+  Copy(const GeneNetwork & geneNetwork);
 
 private:
-
   // This array contains the concentrations of each protein
   // in the cell at a certain time.
   ProteomeType m_ProteinConcentration;

@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  *  limitations under the License.
  *
  *=========================================================================*/
+
 #ifndef itkBioCellularAggregateBase_h
 #define itkBioCellularAggregateBase_h
 
@@ -37,7 +38,7 @@ class ITK_FORWARD_EXPORT CellBase;
  *
  * \ingroup ITKBioCell
  */
-class BioCell_EXPORT CellularAggregateBase:public Object
+class BioCell_EXPORT CellularAggregateBase : public Object
 {
 public:
   ITK_DISALLOW_COPY_AND_ASSIGN(CellularAggregateBase);
@@ -45,8 +46,8 @@ public:
   /** Standard class type alias. */
   using Self = CellularAggregateBase;
   using Superclass = Object;
-  using Pointer = SmartPointer< Self >;
-  using ConstPointer = SmartPointer< const Self >;
+  using Pointer = SmartPointer<Self>;
+  using ConstPointer = SmartPointer<const Self>;
 
   /*** Run-time type information (and related methods). */
   itkTypeMacro(BioCellularAggregateBase, Object);
@@ -59,12 +60,14 @@ public:
   using SubstrateValueType = ImagePixelType;
 
 public:
-  virtual void Add(CellBase *cellA, CellBase *cellB, double perturbationLength);
+  virtual void
+  Add(CellBase * cellA, CellBase * cellB, double perturbationLength);
 
-  virtual void Remove(CellBase *cell);
+  virtual void
+  Remove(CellBase * cell);
 
-  virtual SubstrateValueType GetSubstrateValue(IdentifierType cellId,
-                                               unsigned int substrateId) const;
+  virtual SubstrateValueType
+  GetSubstrateValue(IdentifierType cellId, unsigned int substrateId) const;
 
 protected:
   CellularAggregateBase();

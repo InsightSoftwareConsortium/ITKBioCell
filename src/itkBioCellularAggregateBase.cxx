@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,25 +15,21 @@
  *  limitations under the License.
  *
  *=========================================================================*/
+
 #include "itkBioCellularAggregateBase.h"
 
 namespace itk
 {
 namespace bio
 {
-CellularAggregateBase
-::CellularAggregateBase()
-{}
+CellularAggregateBase ::CellularAggregateBase() = default;
 
-CellularAggregateBase
-::~CellularAggregateBase()
-{}
+CellularAggregateBase ::~CellularAggregateBase() = default;
 
 /** The actual implementation is provided in the derived classes where the Cell
  * dimension is known. */
 CellularAggregateBase::SubstrateValueType
-CellularAggregateBase
-::GetSubstrateValue( IdentifierType itkNotUsed(cellId), unsigned int itkNotUsed(substrateId) ) const
+CellularAggregateBase ::GetSubstrateValue(IdentifierType itkNotUsed(cellId), unsigned int itkNotUsed(substrateId)) const
 {
   return 0;
 }
@@ -41,15 +37,13 @@ CellularAggregateBase
 /** The actual implementation is provided in the derived classes where the Cell
  * dimension is known. */
 void
-CellularAggregateBase
-::Add(CellBase *, CellBase *, double)
+CellularAggregateBase ::Add(CellBase *, CellBase *, double)
 {}
 
 /** The actual implementation is provided in the derived classes where the Cell
  * dimension is known. */
 void
-CellularAggregateBase
-::Remove(CellBase *)
+CellularAggregateBase ::Remove(CellBase *)
 {}
 
 } // end namespace bio

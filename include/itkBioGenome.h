@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,12 +15,13 @@
  *  limitations under the License.
  *
  *=========================================================================*/
+
 #ifndef itkBioGenome_h
 #define itkBioGenome_h
 
 
-#if defined( _WIN32 )
-#include "itkWindows.h"
+#if defined(_WIN32)
+#  include "itkWindows.h"
 #endif
 #include "itkMacro.h"
 #include "BioCellExport.h"
@@ -46,27 +47,33 @@ class BioCell_EXPORT Genome
 {
 public:
   using GeneIdType = std::string;
-  using MapType = std::map< GeneIdType, double >;
+  using MapType = std::map<GeneIdType, double>;
 
 public:
   Genome();
   virtual ~Genome();
 
-  void Copy(const Genome & genome);
+  void
+  Copy(const Genome & genome);
 
-  void InsertGene(const GeneIdType & geneId);
+  void
+  InsertGene(const GeneIdType & geneId);
 
-  void KnockOutGene(const GeneIdType & geneId);
+  void
+  KnockOutGene(const GeneIdType & geneId);
 
-  double GetExpressionLevel(const GeneIdType & geneId);
+  double
+  GetExpressionLevel(const GeneIdType & geneId);
 
-  void   SetExpressionLevel(const GeneIdType & geneId, double level);
+  void
+  SetExpressionLevel(const GeneIdType & geneId, double level);
 
   /** This method computes a normalized Sigmoide function that can
    *  be used for gene network computations.  */
-  static double Sigmoide(double threshold, double slant, double value)
+  static double
+  Sigmoide(double threshold, double slant, double value)
   {
-    return std::atan( ( value - threshold ) / slant ) / 3.1416 + 0.5001;
+    return std::atan((value - threshold) / slant) / 3.1416 + 0.5001;
   }
 
 private:

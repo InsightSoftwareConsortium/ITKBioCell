@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  *  limitations under the License.
  *
  *=========================================================================*/
+
 #include "itkBioGeneNetwork.h"
 
 namespace itk
@@ -24,35 +25,27 @@ namespace bio
 /**
  *    Constructor
  */
-GeneNetwork
-::GeneNetwork()
-{}
+GeneNetwork ::GeneNetwork() = default;
 
 /**
  *    Destructor
  */
-GeneNetwork
-::~GeneNetwork()
-{}
+GeneNetwork ::~GeneNetwork() = default;
 
 /**
  *    Copy from another genome
  */
 void
-GeneNetwork
-::Copy(const GeneNetwork & geneNetwork)
+GeneNetwork ::Copy(const GeneNetwork & geneNetwork)
 {
   m_ProteinConcentration.clear();
-  m_ProteinConcentration.insert(
-    m_ProteinConcentration.begin(),
-    geneNetwork.m_ProteinConcentration.begin(),
-    geneNetwork.m_ProteinConcentration.end() );
+  m_ProteinConcentration.insert(m_ProteinConcentration.begin(),
+                                geneNetwork.m_ProteinConcentration.begin(),
+                                geneNetwork.m_ProteinConcentration.end());
 
   m_DomainConcentration.clear();
   m_DomainConcentration.insert(
-    m_DomainConcentration.begin(),
-    geneNetwork.m_DomainConcentration.begin(),
-    geneNetwork.m_DomainConcentration.end() );
+    m_DomainConcentration.begin(), geneNetwork.m_DomainConcentration.begin(), geneNetwork.m_DomainConcentration.end());
 }
-}  // end namespace bio
-}  // end namespace itk
+} // end namespace bio
+} // end namespace itk
