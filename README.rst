@@ -1,13 +1,15 @@
 ITKBioCell
 ==========
 
+.. image:: https://github.com/InsightSoftwareConsortium/ITKBioCell/workflows/Build,%20test,%20package/badge.svg
+
 .. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKBioCell.svg?style=shield
     :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKBioCell
 
 ===========
-   Linux   
+   Linux
 ===========
-|CircleCI| 
+|CircleCI|
 ===========
 
 An ITK remote module for segmentation of biological cells.
