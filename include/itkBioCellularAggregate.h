@@ -44,7 +44,7 @@ template <unsigned int NSpaceDimension = 3>
 class ITK_TEMPLATE_EXPORT CellularAggregate : public CellularAggregateBase
 {
 public:
-  ITK_DISALLOW_COPY_AND_ASSIGN(CellularAggregate);
+  ITK_DISALLOW_COPY_AND_MOVE(CellularAggregate);
 
   /** Standard class type alias. */
   using Self = CellularAggregate;
