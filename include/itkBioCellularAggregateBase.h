@@ -41,7 +41,7 @@ class ITK_FORWARD_EXPORT CellBase;
 class BioCell_EXPORT CellularAggregateBase : public Object
 {
 public:
-  ITK_DISALLOW_COPY_AND_ASSIGN(CellularAggregateBase);
+  ITK_DISALLOW_COPY_AND_MOVE(CellularAggregateBase);
 
   /** Standard class type alias. */
   using Self = CellularAggregateBase;
