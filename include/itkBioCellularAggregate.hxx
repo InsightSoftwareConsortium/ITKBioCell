@@ -19,7 +19,6 @@
 #ifndef itkBioCellularAggregate_hxx
 #define itkBioCellularAggregate_hxx
 
-#include "itkBioCellularAggregate.h"
 
 namespace itk
 {
