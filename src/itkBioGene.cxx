@@ -25,10 +25,7 @@ namespace bio
 /**
  *    Constructor
  */
-Gene ::Gene()
-{
-  m_Name = "Unknown";
-}
+Gene ::Gene() { m_Name = "Unknown"; }
 
 /**
  *    Destructor
