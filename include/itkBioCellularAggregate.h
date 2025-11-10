@@ -53,7 +53,7 @@ public:
   using ConstPointer = SmartPointer<const Self>;
 
   /*** Run-time type information (and related methods). */
-  itkTypeMacro(BioCellularAggregate, CellularAggregateBase);
+  itkTypeMacro(CellularAggregate, CellularAggregateBase);
 
   /** Method for creation through the object factory. */
   itkNewMacro(Self);
