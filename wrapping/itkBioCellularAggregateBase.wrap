@@ -1,0 +1,2 @@
+itk_wrap_class("itk::bio::CellularAggregateBase" POINTER)
+itk_end_wrap_class()
