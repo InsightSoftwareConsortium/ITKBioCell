@@ -606,10 +606,10 @@ CellularAggregate<NSpaceDimension>::GetSubstrateValue(IdentifierType cellId, uns
 
   typename SubstrateType::IndexType index;
 
-  substrate->TransformPhysicalPointToIndex(cellPosition, index);
+  const bool isInside = substrate->TransformPhysicalPointToIndex(cellPosition, index);
 
   SubstrateValueType value = 0;
-  if (substrate->GetBufferedRegion().IsInside(index))
+  if (isInside && substrate->GetBufferedRegion().IsInside(index))
   {
     value = substrate->GetPixel(index);
   }
